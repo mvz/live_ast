@@ -4,6 +4,7 @@ AllCops:
     - 'devel/levitate.rb'
     - 'devel/levitate_config.rb'
     - 'vendor/**/*'
+  TargetRubyVersion: 2.1
 
 # RuboCop has no setting to accept how vim aligns parameters.
 Layout/AlignParameters:
@@ -33,6 +34,10 @@ Lint/HandleExceptions:
 Lint/RescueException:
   Enabled: false
 
+# Uniform block layout
+Layout/SpaceBeforeBlockBraces:
+  EnforcedStyleForEmptyBraces: space
+
 # Allow test classes to have any length
 Metrics/ClassLength:
   Exclude:
@@ -53,6 +58,12 @@ Style/BlockDelimiters:
 
 # Allow def A.foo in tests
 Style/ClassMethods:
+  Exclude:
+    - 'test/**/*'
+
+# Stack trace is less important in tests
+# TODO: Look into details later
+Style/EvalWithLocation:
   Exclude:
     - 'test/**/*'
 
