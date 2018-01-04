@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
     generated code.
   DESC
 
-  spec.required_ruby_version = ">= 2.1.0"
+  spec.required_ruby_version = ">= 2.3.0"
 
   spec.files = Dir['{devel,lib,test}/**/*.rb',
                    "*.rdoc",
