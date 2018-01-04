@@ -26,11 +26,7 @@ if ENV["LIVE_AST_RUBYSPEC_HOME"]
         Dir.chdir ENV["LIVE_AST_RUBYSPEC_HOME"] do
           cmd =
             ["mspec", "-t", Levitate.ruby_bin] +
-
-            (["-T"] * Levitate.ruby_opts.size).
-            zip(Levitate.ruby_opts).
-            flatten +
-
+            (["-T"] * Levitate.ruby_opts.size).zip(Levitate.ruby_opts).flatten +
             [file]
 
           assert system(*cmd)
