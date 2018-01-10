@@ -17,11 +17,7 @@ module LiveAST
 
       range = 0 if range == (0..0)
 
-      message = if RUBY_VERSION < "2.3.0"
-                  "wrong number of arguments (#{args.size} for #{range})"
-                else
-                  "wrong number of arguments (given #{args.size}, expected #{range})"
-                end
+      message = "wrong number of arguments (given #{args.size}, expected #{range})"
       raise ArgumentError, message
     end
 

@@ -19,7 +19,6 @@ class LoadPathTest < BaseTest
   end
 
   def test_chdir
-    mkdir DATA_DIR, verbose: false
     Dir.chdir(DATA_DIR) do
       check_load
       check_errors
