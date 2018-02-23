@@ -1,6 +1,11 @@
 
 = live_ast Changes
 
+== Version 1.3.0
+
+* Drop support for Rubies below 2.3
+* Update dependencies
+
 == Version 1.2.0
 
 * Drop support for Rubies below 2.1
