@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'main'
 
 if LiveAST.parser::Test.respond_to?(:unparser_matches_ruby2ruby?) &&

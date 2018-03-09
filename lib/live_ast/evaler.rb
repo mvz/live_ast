@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LiveAST
   module Evaler
     class << self

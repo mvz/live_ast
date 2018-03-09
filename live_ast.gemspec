@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.join(File.dirname(__FILE__), 'lib/live_ast/version.rb')
 
 Gem::Specification.new do |spec|

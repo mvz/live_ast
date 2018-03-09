@@ -1,4 +1,6 @@
 
+# frozen_string_literal: true
+
 #
 # Used by the LiveAST test suite.
 #

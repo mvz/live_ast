@@ -125,7 +125,11 @@ Style/AndOr:
   EnforcedStyle: conditionals
 
 # Allow semantic choice of trailing comma
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+# Allow semantic choice of trailing comma
+Style/TrailingCommaInHashLiteral:
   Enabled: false
 
 # Use {} for %-literals, and revert to previous RuboCop default for %w

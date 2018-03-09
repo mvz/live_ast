@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LiveAST
   class Cache
     def initialize(*args)
@@ -39,10 +41,10 @@ module LiveAST
   end
 
   module Linker
-    REVISION_TOKEN = "|ast@".freeze
+    REVISION_TOKEN = "|ast@"
 
     @caches = {}
-    @counter = "a"
+    @counter = +"a"
     @mutex = Mutex.new
 
     class << self

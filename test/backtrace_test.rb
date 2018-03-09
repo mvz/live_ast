@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'main'
 
 # test for raise redefinition side-effects: unsort this TestCase from
