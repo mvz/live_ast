@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'main'
 
 require 'live_ast/to_ast'

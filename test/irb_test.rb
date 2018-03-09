@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'main'
 require 'live_ast/irb_spy'
 

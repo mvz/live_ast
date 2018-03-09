@@ -1,4 +1,5 @@
 # encoding: us-ascii
+# frozen_string_literal: true
 
 module LiveAST
   module Reader

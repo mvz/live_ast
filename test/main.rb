@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 $LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
 
 # require first for stdlib_test
@@ -31,11 +33,12 @@ class JLMiniTest < MiniTest::Test
   end
 
   def delim(char)
-    "\n" << (char * 72) << "\n"
+    "\n#{char * 72}\n"
   end
 
   def mu_pp(obj)
-    delim("_") <<
+    +'' <<
+      delim("_") <<
       obj.pretty_inspect.chomp <<
       delim("=")
   end

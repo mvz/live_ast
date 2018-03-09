@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LiveAST
   module Loader
     class << self
@@ -8,7 +10,7 @@ module LiveAST
         header, footer, warnings_ok = header_footer(wrap)
 
         parser_src = Reader.read(file)
-        evaler_src = header << parser_src << footer
+        evaler_src = +'' << header << parser_src << footer
 
         run = lambda do
           Evaler.eval(parser_src, evaler_src, TOPLEVEL_BINDING, file, 1)

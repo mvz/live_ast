@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'live_ast/base'
 
 [Method, UnboundMethod].each do |klass|

@@ -46,13 +46,6 @@ Naming/UncommunicativeMethodParamName:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 58
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: when_needed, always, never
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: ConvertCodeThatCanStartToReturnNil, Whitelist.
