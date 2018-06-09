@@ -35,7 +35,11 @@ module LiveAST
       if bind
         case location.size
         when 0
-          NATIVE_EVAL.call("[__FILE__, __LINE__]", bind)
+          if RUBY_VERSION < "2.6.0"
+            NATIVE_EVAL.call("[__FILE__, __LINE__]", bind)
+          else
+            bind.source_location
+          end
         when 1
           [location.first, 1]
         else
