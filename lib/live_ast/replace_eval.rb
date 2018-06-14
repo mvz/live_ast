@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'live_ast/base'
-require 'binding_of_caller'
+require 'bindings'
 
 module LiveAST
   module ReplaceEval
