@@ -1,5 +1,8 @@
-
 = live_ast Changes
+
+== Unreleased
+
+* use bindings gem instead of binding_of_caller
 
 == Version 1.3.2
 
