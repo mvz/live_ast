@@ -129,8 +129,8 @@ semantics as +eval+ except that the binding argument is required.
 == Full Integration
 
 In order for LiveAST to be transparent to the user, +eval+ must be
-replaced. This is accomplished with the help of the +binding_of_caller+ gem
-(https://github.com/banister/binding_of_caller).
+replaced. This is accomplished with the help of the +bindings+ gem
+(https://github.com/shreeve/bindings).
 
 To replace +eval+,
 
@@ -149,7 +149,7 @@ below for details).
   # => s(:iter, s(:call, nil, :lambda), 0, s(:str, "dynamic1"))
 
 Since LiveAST itself is pure ruby, any platforms supported by
-+binding_of_caller+ should work with <code>live_ast/full</code>.
++bindings+ should work with <code>live_ast/full</code>.
 
 == Limitations
 
