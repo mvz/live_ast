@@ -23,6 +23,7 @@ module LiveAST
 
       def checked_history
         return @history if @history
+
         raise NotImplementedError,
           "LiveAST cannot access history for this IRB input method"
       end

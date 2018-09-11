@@ -21,6 +21,7 @@ module LiveAST
 
       def header_footer(wrap)
         return "class << Object.new;", ";end", true if wrap
+
         locals = NATIVE_EVAL.call("local_variables", TOPLEVEL_BINDING)
 
         params = locals.empty? ? "" : ("|;" + locals.join(",") + "|")
@@ -42,12 +43,14 @@ module LiveAST
         if file.index Linker::REVISION_TOKEN
           raise "refusing to load file with revision token: `#{file}'"
         end
+
         search_paths(file) or
           raise LoadError, "cannot load such file -- #{file}"
       end
 
       def search_paths(file)
         return file if File.file? file
+
         $LOAD_PATH.each do |path|
           target = path + "/" + file
           return target if File.file? target
