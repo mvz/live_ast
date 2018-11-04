@@ -3,8 +3,8 @@
 
 module LiveAST
   module Reader
-    UTF8_BOM = /\A\xef\xbb\xbf/
-    MAGIC_COMMENT = /\A(?:#!.*?\n)?\s*\#.*(?:en)?coding\s*[:=]\s*([^\s;]+)/
+    UTF8_BOM = /\A\xef\xbb\xbf/.freeze
+    MAGIC_COMMENT = /\A(?:#!.*?\n)?\s*\#.*(?:en)?coding\s*[:=]\s*([^\s;]+)/.freeze
 
     def self.read(file)
       contents = File.read(file, encoding: "BINARY")
