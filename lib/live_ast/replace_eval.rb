@@ -36,7 +36,7 @@ module LiveAST
       def handle_args(args)
         LiveAST::Common.check_arity(args, 1..3)
         args[0] = Common.arg_to_str(args[0])
-        args[1] = Common.arg_to_str(args[1]) if args.length > 1
+        args[1] = Common.arg_to_str2(args[1]) if args.length > 1
       end
     end
   end

@@ -13,6 +13,19 @@ module LiveAST
       raise TypeError, message
     end
 
+    def arg_to_str2(arg)
+      arg.to_str
+    rescue NameError
+      thing = arg.nil? ? nil : arg.class
+
+      message = if RUBY_VERSION >= "2.6.0"
+                  "wrong argument type #{thing.inspect} (expected String)"
+                else
+                  "no implicit conversion of #{thing.inspect} into String"
+                end
+      raise TypeError, message
+    end
+
     def check_arity(args, range)
       return if range.include? args.size
 
@@ -35,7 +48,11 @@ module LiveAST
       if bind
         case location.size
         when 0
-          NATIVE_EVAL.call("[__FILE__, __LINE__]", bind)
+          if RUBY_VERSION < "2.6.0"
+            NATIVE_EVAL.call("[__FILE__, __LINE__]", bind)
+          else
+            bind.source_location
+          end
         when 1
           [location.first, 1]
         else
