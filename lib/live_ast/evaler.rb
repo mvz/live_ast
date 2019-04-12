@@ -15,9 +15,9 @@ module LiveAST
 
         begin
           NATIVE_EVAL.call(evaler_source, bind, key, line)
-        rescue Exception => ex
-          ex.backtrace.map! { |s| LiveAST.strip_token s }
-          raise ex
+        rescue Exception => e
+          e.backtrace.map! { |s| LiveAST.strip_token s }
+          raise e
         end
       end
 

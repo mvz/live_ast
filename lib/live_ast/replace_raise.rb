@@ -10,8 +10,8 @@ module Kernel
   def raise(*args)
     ex = begin
            live_ast_original_raise(*args)
-         rescue Exception => t
-           t
+         rescue Exception => e
+           e
          end
     ex.backtrace.reject! { |line| line.index __FILE__ }
     ex.backtrace.map! { |line| LiveAST.strip_token line }
