@@ -4,7 +4,7 @@ AllCops:
     - 'devel/levitate.rb'
     - 'devel/levitate_config.rb'
     - 'vendor/**/*'
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 # RuboCop has no setting to accept how vim aligns parameters.
 Layout/AlignParameters:
