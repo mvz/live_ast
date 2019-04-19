@@ -18,7 +18,7 @@ module LiveAST
     end
 
     def self.strip_special(encoding)
-      if encoding =~ /\Autf8-mac\Z/i
+      if /\Autf8-mac\Z/i.match?(encoding)
         "UTF8-MAC"
       else
         encoding.sub(/-(unix|dos|mac)\Z/i, "")
