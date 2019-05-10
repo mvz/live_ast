@@ -9,7 +9,7 @@ AllCops:
   TargetRubyVersion: 2.4
 
 # RuboCop has no setting to accept how vim aligns parameters.
-Layout/AlignParameters:
+Layout/AlignArguments:
   Enabled: false
 
 Layout/DotPosition:
