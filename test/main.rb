@@ -54,7 +54,7 @@ class JLMiniTest < MiniTest::Test
     assert_nil nil
   rescue StandardError => e
     raise MiniTest::Assertion,
-      exception_details(e, "Expected nothing raised, but got:")
+          exception_details(e, "Expected nothing raised, but got:")
   end
 
   %w(

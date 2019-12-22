@@ -25,7 +25,7 @@ module LiveAST
         return @history if @history
 
         raise NotImplementedError,
-          "LiveAST cannot access history for this IRB input method"
+              "LiveAST cannot access history for this IRB input method"
       end
     end
   end

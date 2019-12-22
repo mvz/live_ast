@@ -18,6 +18,7 @@ define_unsorted_test_case "FlushCacheTest", RegularTest do
   def uncached_method_from_require
     klass = Class.new do
       def f; end
+
       def g; end
     end
 
@@ -69,6 +70,7 @@ define_unsorted_test_case "FlushCacheTest", RegularTest do
   def lost_method_from_require
     klass = Class.new do
       def f; end
+
       def g; end
     end
 
