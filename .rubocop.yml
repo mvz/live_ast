@@ -11,6 +11,10 @@ AllCops:
     - 'vendor/**/*'
   TargetRubyVersion: 2.4
 
+# Require lines to fit in pull requests.
+Layout/LineLength:
+  Max: 92
+
 # Don't force lonely closing parentheses
 Layout/MultilineMethodCallBraceLayout:
   EnforcedStyle: same_line
@@ -38,7 +42,7 @@ Lint/AssignmentInCondition:
   AllowSafeAssignment: true
 
 # Needed for `unfixable` in tests
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Exclude:
     - 'test/**/*'
 
@@ -50,10 +54,6 @@ Lint/RescueException:
 Metrics/ClassLength:
   Exclude:
     - 'test/**/*'
-
-# Require lines to fit in pull requests.
-Metrics/LineLength:
-  Max: 92
 
 # Allow use of eval in tests (that is sort of the point!)
 Security/Eval:

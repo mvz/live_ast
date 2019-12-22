@@ -13,7 +13,7 @@ Lint/NestedMethodDefinition:
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Lint/UnneededRequireStatement:
+Lint/RedundantRequireStatement:
   Exclude:
     - 'lib/live_ast/base.rb'
     - 'test/thread_test.rb'
@@ -35,7 +35,7 @@ Metrics/MethodLength:
 # Offense count: 15
 # Configuration parameters: MinNameLength, AllowNamesEndingInNumbers, AllowedNames, ForbiddenNames.
 # AllowedNames: io, id, to, by, on, in, at
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Exclude:
     - 'lib/live_ast/ruby_parser/test.rb'
     - 'test/def_test.rb'
