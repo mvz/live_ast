@@ -58,8 +58,7 @@ module Kernel
     LiveAST.eval(
       args[0],
       args[1] || binding.of_caller(1),
-      *LiveAST::Common.location_for_eval(*args[1..3])
-    )
+      *LiveAST::Common.location_for_eval(*args[1..3]))
   end
 end
 
@@ -80,11 +79,11 @@ class BasicObject
     if block
       live_ast_original_instance_eval(*args, &block)
     else
-      ::LiveAST::ReplaceEval.
-        module_or_instance_eval(:instance,
-                                self,
-                                ::Kernel.binding.of_caller(1),
-                                args)
+      ::LiveAST::ReplaceEval
+        .module_or_instance_eval(:instance,
+                                 self,
+                                 ::Kernel.binding.of_caller(1),
+                                 args)
     end
   end
 end
@@ -97,8 +96,8 @@ class Module
     if block
       live_ast_original_module_eval(*args, &block)
     else
-      LiveAST::ReplaceEval.
-        module_or_instance_eval(:module, self, binding.of_caller(1), args)
+      LiveAST::ReplaceEval
+        .module_or_instance_eval(:module, self, binding.of_caller(1), args)
     end
   end
 

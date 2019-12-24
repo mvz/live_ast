@@ -1,4 +1,7 @@
-require: rubocop-performance
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
 
 AllCops:
   Exclude:
@@ -8,16 +11,27 @@ AllCops:
     - 'vendor/**/*'
   TargetRubyVersion: 2.4
 
-# RuboCop has no setting to accept how vim aligns parameters.
-Layout/AlignArguments:
-  Enabled: false
+# Require lines to fit in pull requests.
+Layout/LineLength:
+  Max: 92
 
-Layout/DotPosition:
-  EnforcedStyle: trailing
+# Don't force lonely closing parentheses
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: same_line
 
-# Require empty lines between defs except for one-liners
-Layout/EmptyLineBetweenDefs:
-  AllowAdjacentOneLineDefs: true
+# Multi-line method calls should be simply indented. Aligning them makes it
+# even harder to keep a sane line length.
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+# Multi-line assignment should be simply indented. Aligning them makes it even
+# harder to keep a sane line length.
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+# Force consistent spacing independent of block contents
+Layout/SpaceBeforeBlockBraces:
+  EnforcedStyleForEmptyBraces: space
 
 # Assume the programmer knows how bracketed block syntax works
 Lint/AmbiguousBlockAssociation:
@@ -28,7 +42,7 @@ Lint/AssignmentInCondition:
   AllowSafeAssignment: true
 
 # Needed for `unfixable` in tests
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Exclude:
     - 'test/**/*'
 
@@ -36,18 +50,10 @@ Lint/HandleExceptions:
 Lint/RescueException:
   Enabled: false
 
-# Uniform block layout
-Layout/SpaceBeforeBlockBraces:
-  EnforcedStyleForEmptyBraces: space
-
 # Allow test classes to have any length
 Metrics/ClassLength:
   Exclude:
     - 'test/**/*'
-
-# Require lines to fit in pull requests.
-Metrics/LineLength:
-  Max: 92
 
 # Allow use of eval in tests (that is sort of the point!)
 Security/Eval:
@@ -139,5 +145,3 @@ Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%':  '{}'
     '%w': ()
-
-inherit_from: .rubocop_todo.yml
