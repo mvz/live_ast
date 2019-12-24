@@ -31,7 +31,7 @@ class LambdaTest < RegularTest
   def test_stabby_lambda
     a = ->(x, y) { x - y }
 
-    expected = binop_block(:lambda, :-)
+    expected = binop_lambda(:-)
     assert_equal expected, a.to_ast
   end
 

@@ -151,6 +151,18 @@ module LiveAST
       end
 
       #
+      # binop_lambda(:+) returns the ast of
+      #
+      #   lambda { |x, y| x + y }
+      #
+      def binop_lambda(op)
+        s(:iter,
+          s(:lambda),
+          s(:args, :x, :y),
+          s(:call, s(:lvar, :x), op, s(:lvar, :y)))
+      end
+
+      #
       # binop_proc_new(:*) returns the ast of
       #
       #   Proc.new { |x, y| x * y }
