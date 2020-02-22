@@ -11,7 +11,7 @@ AllCops:
     - 'vendor/**/*'
   TargetRubyVersion: 2.4
 
-# Require lines to fit in pull requests.
+# Be lenient with line length
 Layout/LineLength:
   Max: 92
 
@@ -60,6 +60,10 @@ Security/Eval:
   Exclude:
     - 'test/**/*'
 
+# Allow and/or for control flow only
+Style/AndOr:
+  EnforcedStyle: conditionals
+
 # Allow multi-line blocks of all sorts
 Style/BlockDelimiters:
   Enabled: false
@@ -80,15 +84,47 @@ Style/Encoding:
   Exclude:
     - 'lib/live_ast/reader.rb'
 
+# Require at least two dependent lines before suggesting a guard clause
+Style/GuardClause:
+  MinBodyLength: 2
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
 # Allow both lambda syntaxes in tests
 Style/Lambda:
   Exclude:
     - 'test/**/*'
 
+# This test requires its constant to be mutable
+Style/MutableConstant:
+  Exclude:
+    - 'test/full/replace_eval_test.rb'
+
+# Sometimes an if statement just looks better than next with a guard clause
+Style/Next:
+  Enabled: false
+
+# Use {} for %-literals, and revert to previous RuboCop default for %w
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%':  '{}'
+    '%w': ()
+
 # Allow Proc.new in tests
 Style/Proc:
   Exclude:
     - 'test/**/*'
+
+# Allow explicit return with multiple return values
+Style/RedundantReturn:
+  AllowMultipleReturnValues: true
 
 # Allow foo.bar rescue nil in tests
 Style/RescueModifier:
@@ -103,34 +139,13 @@ Style/Semicolon:
 Style/SignalException:
   EnforcedStyle: only_raise
 
-# Allow non-interpolated strings with double quotes
+# Do not commit to use of interpolation
 Style/StringLiterals:
-  Enabled: false
+  EnforcedStyle: double_quotes
 
 # Prefer symbols to look like symbols
 Style/SymbolArray:
   EnforcedStyle: brackets
-
-# Allow explicit return with multiple return values
-Style/RedundantReturn:
-  AllowMultipleReturnValues: true
-
-# Require at least two dependent lines before suggesting a guard clause
-Style/GuardClause:
-  MinBodyLength: 2
-
-# This test requires its constant to be mutable
-Style/MutableConstant:
-  Exclude:
-    - 'test/full/replace_eval_test.rb'
-
-# Sometimes an if statement just looks better than next with a guard clause
-Style/Next:
-  Enabled: false
-
-# Support use of and and or for control flow.
-Style/AndOr:
-  EnforcedStyle: conditionals
 
 # Allow semantic choice of trailing comma
 Style/TrailingCommaInArrayLiteral:
@@ -139,9 +154,3 @@ Style/TrailingCommaInArrayLiteral:
 # Allow semantic choice of trailing comma
 Style/TrailingCommaInHashLiteral:
   Enabled: false
-
-# Use {} for %-literals, and revert to previous RuboCop default for %w
-Style/PercentLiteralDelimiters:
-  PreferredDelimiters:
-    '%':  '{}'
-    '%w': ()
