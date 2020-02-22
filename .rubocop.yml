@@ -135,10 +135,6 @@ Style/RescueModifier:
 Style/Semicolon:
   AllowAsExpressionSeparator: true
 
-# Always use raise to raise exceptions
-Style/SignalException:
-  EnforcedStyle: only_raise
-
 # Do not commit to use of interpolation
 Style/StringLiterals:
   EnforcedStyle: double_quotes
