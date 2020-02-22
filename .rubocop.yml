@@ -126,11 +126,6 @@ Style/Proc:
 Style/RedundantReturn:
   AllowMultipleReturnValues: true
 
-# Allow foo.bar rescue nil in tests
-Style/RescueModifier:
-  Exclude:
-    - 'test/**/*'
-
 # Allow multiple expressions per line
 Style/Semicolon:
   AllowAsExpressionSeparator: true
