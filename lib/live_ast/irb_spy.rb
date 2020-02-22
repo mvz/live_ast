@@ -33,7 +33,7 @@ end
 
 [
   defined?(IRB::StdioInputMethod) ? IRB::StdioInputMethod : nil,
-  defined?(IRB::ReadlineInputMethod) ? IRB::ReadlineInputMethod : nil,
+  defined?(IRB::ReadlineInputMethod) ? IRB::ReadlineInputMethod : nil
 ].compact.each do |klass|
   klass.module_eval do
     alias_method :live_ast_original_gets, :gets

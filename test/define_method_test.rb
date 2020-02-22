@@ -8,7 +8,7 @@ class DefineMethodTest < RegularTest
       {
         f: :+,
         g: :*,
-        h: :-,
+        h: :-
       }.each_pair do |name, op|
         case op
         when :+

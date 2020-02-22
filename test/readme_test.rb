@@ -9,7 +9,7 @@ if RUBY_ENGINE != "jruby" # jruby takes about a minute
     "+to_ruby+",
     "Noninvasive Interface",
     "Pure Ruby and +ast_eval+",
-    "Full Integration",
+    "Full Integration"
   ]
 
   Levitate.doc_to_test("README.rdoc", *sections)

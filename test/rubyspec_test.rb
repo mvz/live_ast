@@ -14,7 +14,7 @@ if ENV["LIVE_AST_RUBYSPEC_HOME"]
       "core/kernel/eval_spec.rb",
       "core/kernel/instance_eval_spec.rb",
       "core/module/class_eval_spec.rb",
-      "core/module/module_eval_spec.rb",
+      "core/module/module_eval_spec.rb"
     ].freeze
 
     def setup

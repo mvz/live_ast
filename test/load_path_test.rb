@@ -68,7 +68,7 @@ class LoadPathTest < BaseTest
         "",
         "/usr",
         ".",
-        "..",
+        ".."
       ].each do |file|
         compare_load_errors(file)
       end
