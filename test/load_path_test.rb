@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'main'
+require_relative "main"
 
 class LoadPathTest < BaseTest
   include FileUtils

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require File.join(File.dirname(__FILE__), 'lib/live_ast/version.rb')
+require File.join(File.dirname(__FILE__), "lib/live_ast/version.rb")
 
 Gem::Specification.new do |spec|
-  spec.name = 'mvz-live_ast'
+  spec.name = "mvz-live_ast"
   spec.version = LiveAST::VERSION
 
   spec.summary = "Live abstract syntax trees of methods and procs."
@@ -21,10 +21,10 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 2.4.0"
 
-  spec.files = Dir['{devel,lib,test}/**/*.rb',
+  spec.files = Dir["{devel,lib,test}/**/*.rb",
                    "*.rdoc",
                    "Rakefile"]
-  spec.test_files = Dir['test/**/*.rb']
+  spec.test_files = Dir["test/**/*.rb"]
 
   spec.add_runtime_dependency "ruby2ruby", "~> 2.4.0"
   spec.add_runtime_dependency "ruby_parser", "~> 3.14"

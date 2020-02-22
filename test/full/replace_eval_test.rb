@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'main'
+require "main"
 
 class FullReplaceEvalTest < ReplaceEvalTest
   RESULT = {}
@@ -141,7 +141,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
   end
 
   def test_instance_eval_arg_error_no_block
-    [[], ('a'..'z').to_a].each do |args|
+    [[], ("a".."z").to_a].each do |args|
       orig = assert_raises ArgumentError do
         Object.new.live_ast_original_instance_eval(*args)
       end
@@ -173,7 +173,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   describe "instance_eval argument errors" do
     before do
-      require 'live_ast/full'
+      require "live_ast/full"
     end
 
     let(:orig) {
@@ -188,7 +188,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
     }
 
     describe "when the second argument is nil" do
-      let(:args) { ['1', nil] }
+      let(:args) { ["1", nil] }
       it "raises the same error as the original" do
         assert_equal orig.message, live.message
         assert_equal orig.class, live.class

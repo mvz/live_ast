@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'main'
-require_relative '../devel/levitate'
+require_relative "main"
+require_relative "../devel/levitate"
 
 #
 # Tests against rubyspec branch which discards '|ast@' tokens
@@ -9,12 +9,12 @@ require_relative '../devel/levitate'
 if ENV["LIVE_AST_RUBYSPEC_HOME"]
   class RubySpecTest < RegularTest
     FILES = [
-      'core/basicobject/instance_eval_spec.rb',
-      'core/binding/eval_spec.rb',
-      'core/kernel/eval_spec.rb',
-      'core/kernel/instance_eval_spec.rb',
-      'core/module/class_eval_spec.rb',
-      'core/module/module_eval_spec.rb',
+      "core/basicobject/instance_eval_spec.rb",
+      "core/binding/eval_spec.rb",
+      "core/kernel/eval_spec.rb",
+      "core/kernel/instance_eval_spec.rb",
+      "core/module/class_eval_spec.rb",
+      "core/module/module_eval_spec.rb",
     ].freeze
 
     def setup

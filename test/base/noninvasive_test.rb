@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'main'
+require "main"
 
 class NoninvasiveTest < BaseTest
   def test_no_clutter

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'live_ast/base'
+require "live_ast/base"
 
 [Method, UnboundMethod, Proc].each do |klass|
   klass.class_eval do

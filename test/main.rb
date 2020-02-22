@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + "/../lib")
 
 # require first for stdlib_test
-require 'pp'
-require 'find'
-require 'fileutils'
+require "pp"
+require "find"
+require "fileutils"
 
-require 'minitest/mock'
-require 'minitest/autorun'
+require "minitest/mock"
+require "minitest/autorun"
 
 $VERBOSE = true
 
-require 'live_ast/base'
+require "live_ast/base"
 
 def define_unsorted_test_case(name, superclass, &block)
   klass = Class.new superclass, &block
-  letter = ('A'..'Z').to_a[rand(26)]
+  letter = ("A".."Z").to_a[rand(26)]
   Object.const_set "#{letter}#{name}", klass
 end
 
@@ -37,7 +37,7 @@ class JLMiniTest < MiniTest::Test
   end
 
   def mu_pp(obj)
-    +'' <<
+    +"" <<
       delim("_") <<
       obj.pretty_inspect.chomp <<
       delim("=")
@@ -75,7 +75,7 @@ class BaseTest < JLMiniTest
   end
 
   def temp_file(code, basename = nil)
-    basename ||= ('a'..'z').to_a.shuffle.join + ".rb"
+    basename ||= ("a".."z").to_a.shuffle.join + ".rb"
     path = DATA_DIR + "/" + basename
 
     write_file path, code if code
@@ -106,7 +106,7 @@ end
 class RegularTest < BaseTest
   def setup
     super
-    require 'live_ast'
+    require "live_ast"
   end
 end
 
@@ -114,7 +114,7 @@ class ReplaceEvalTest < BaseTest
   def initialize(*args)
     super
     ok = begin
-           require 'live_ast/full'
+           require "live_ast/full"
            true
          rescue LoadError
            raise "need: gem install binding_of_caller" if RUBY_ENGINE == "ruby"

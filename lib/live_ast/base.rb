@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'thread'
+require "thread"
 
-require 'live_ast/common'
-require 'live_ast/reader'
-require 'live_ast/evaler'
-require 'live_ast/linker'
-require 'live_ast/loader'
-require 'live_ast/error'
-require 'live_ast/irb_spy' if defined?(IRB)
+require "live_ast/common"
+require "live_ast/reader"
+require "live_ast/evaler"
+require "live_ast/linker"
+require "live_ast/loader"
+require "live_ast/error"
+require "live_ast/irb_spy" if defined?(IRB)
 
 module LiveAST
   NATIVE_EVAL = Kernel.method(:eval) #:nodoc:
@@ -18,7 +18,7 @@ module LiveAST
 
     def parser #:nodoc:
       @parser ||= begin
-        require 'live_ast/ruby_parser'
+        require "live_ast/ruby_parser"
         LiveAST::RubyParser
       end
     end

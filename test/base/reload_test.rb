@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'main'
+require "main"
 
 class ReloadTest < BaseTest
   include FileUtils

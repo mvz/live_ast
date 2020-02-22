@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'main'
+require_relative "main"
 
-require 'thread'
+require "thread"
 
 class ThreadTest < RegularTest
   def test_threads

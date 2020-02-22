@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'main'
-require_relative '../devel/levitate'
+require_relative "main"
+require_relative "../devel/levitate"
 
 if RUBY_ENGINE != "jruby" # jruby takes about a minute
   sections = [

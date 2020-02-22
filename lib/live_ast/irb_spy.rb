@@ -8,7 +8,7 @@ module LiveAST
       attr_writer :history
 
       def code_at(line)
-        code = +''
+        code = +""
         checked_history[line..-1].each do |code_line|
           code << code_line << "\n"
           return code if can_parse code
