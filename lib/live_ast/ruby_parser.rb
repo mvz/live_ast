@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'ruby_parser'
-require 'live_ast/base'
+require "ruby_parser"
+require "live_ast/base"
 
 module LiveAST
   class RubyParser
@@ -33,7 +33,7 @@ module LiveAST
   end
 end
 
-LiveAST::RubyParser.autoload :Unparser, 'live_ast/ruby_parser/unparser'
-LiveAST::RubyParser.autoload :Test, 'live_ast/ruby_parser/test'
+LiveAST::RubyParser.autoload :Unparser, "live_ast/ruby_parser/unparser"
+LiveAST::RubyParser.autoload :Test, "live_ast/ruby_parser/test"
 
 LiveAST.parser = LiveAST::RubyParser

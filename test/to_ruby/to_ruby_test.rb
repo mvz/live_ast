@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'main'
+require "main"
 
 if LiveAST.parser::Test.respond_to?(:unparser_matches_ruby2ruby?) &&
     LiveAST.parser::Test.unparser_matches_ruby2ruby?
   class ToRubyTest < RegularTest
     def setup
       super
-      require 'live_ast/to_ruby'
+      require "live_ast/to_ruby"
     end
 
     def test_lambda_0

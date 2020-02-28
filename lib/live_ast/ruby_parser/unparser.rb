@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'ruby2ruby'
+require "ruby2ruby"
 
 #
 # Used by +to_ruby+ in LiveAST.

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'live_ast/base'
+require "live_ast/base"
 
 module Kernel
   alias live_ast_original_load load

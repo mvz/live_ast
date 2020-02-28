@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'main'
-require_relative '../devel/levitate'
+require_relative "main"
+require_relative "../devel/levitate"
 
 class RubygemsTest < RegularTest
   def test_rubygems
@@ -22,6 +22,6 @@ class RubygemsTest < RegularTest
       }
       p f.to_ast
     }
-    assert_equal no_arg_block(:lambda, 'abc').to_s, result.chomp
+    assert_equal no_arg_block(:lambda, "abc").to_s, result.chomp
   end
 end

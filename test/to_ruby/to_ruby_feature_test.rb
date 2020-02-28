@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'main'
+require "main"
 
-require 'live_ast/to_ruby'
+require "live_ast/to_ruby"
 
 class ToRubyFeatureTest < BaseTest
   def test_defines_to_ruby

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'main'
-require_relative '../devel/levitate'
+require_relative "main"
+require_relative "../devel/levitate"
 
 if RUBY_ENGINE != "jruby" # jruby takes about a minute
   sections = [
@@ -9,7 +9,7 @@ if RUBY_ENGINE != "jruby" # jruby takes about a minute
     "+to_ruby+",
     "Noninvasive Interface",
     "Pure Ruby and +ast_eval+",
-    "Full Integration",
+    "Full Integration"
   ]
 
   Levitate.doc_to_test("README.rdoc", *sections)

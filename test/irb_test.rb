@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'main'
-require 'live_ast/irb_spy'
+require_relative "main"
+require "live_ast/irb_spy"
 
 class IRBTest < RegularTest
   def with_module(parent, child)

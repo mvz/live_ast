@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'main'
+require_relative "main"
 
 # test for raise redefinition side-effects: unsort this TestCase from
 # other TestCases.
@@ -113,7 +113,7 @@ define_unsorted_test_case "BacktraceTest", RegularTest do
     raise_after_eval("raise", false)
     raise_after_eval("1/0", false)
 
-    require 'live_ast/replace_raise'
+    require "live_ast/replace_raise"
 
     raise_after_eval("raise", true)
     raise_after_eval("1/0", false)

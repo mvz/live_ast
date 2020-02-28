@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'main'
+require "main"
 
-require 'live_ast/ast_load'
+require "live_ast/ast_load"
 
 class AstLoadTest < BaseTest
   include FileUtils

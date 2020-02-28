@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'main'
-require_relative '../devel/levitate'
+require_relative "main"
+require_relative "../devel/levitate"
 
 class LoadFileTest < BaseTest
   class << self

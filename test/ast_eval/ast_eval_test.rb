@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'main'
+require "main"
 
-require 'live_ast/ast_eval'
+require "live_ast/ast_eval"
 
 class ASTEvalTest < BaseTest
   def test_defines_ast_eval

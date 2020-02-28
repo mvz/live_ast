@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'main'
+require_relative "main"
 
 class DefineMethodTest < RegularTest
   WITH_BLOCKS = lambda do
@@ -8,7 +8,7 @@ class DefineMethodTest < RegularTest
       {
         f: :+,
         g: :*,
-        h: :-,
+        h: :-
       }.each_pair do |name, op|
         case op
         when :+
