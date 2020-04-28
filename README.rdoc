@@ -224,6 +224,20 @@ code. An exception from within a native method will likely still
 contain the token in its backtrace (e.g., in MRI the exception raised
 by <code>1/0</code> comes from C).
 
+Similarly to replace_raise, there is a replace_caller for libraries that
+use the output of Kernel.caller directly to identify files.  This has the 
+same caveats as replace_raise.
+  
+  require 'live_ast'
+
+  f = ast_eval %{ lambda { caller.first } }, binding
+  f.call
+  => "(irb)|ast@o:7:in `irb_binding'"
+
+  require 'live_ast/replace_caller'
+  f.call
+  => "(irb):7:in `block in irb_binding'"
+
 == Replacing the Parser
 
 Despite its name, LiveAST knows nothing about ASTs. It merely reports
