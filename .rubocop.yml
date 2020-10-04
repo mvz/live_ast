@@ -12,6 +12,10 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 2.4
 
+# Make BeginEndAlignment behavior match EndAlignment
+Layout/BeginEndAlignment:
+  EnforcedStyleAlignWith: begin
+
 # Be lenient with line length
 Layout/LineLength:
   Max: 92
@@ -41,6 +45,11 @@ Lint/AmbiguousBlockAssociation:
 # Allow if (foo = get_foo) style
 Lint/AssignmentInCondition:
   AllowSafeAssignment: true
+
+# Tests use blocks that define constants
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - 'test/**/*'
 
 # Needed for `unfixable` in tests
 Lint/SuppressedException:
