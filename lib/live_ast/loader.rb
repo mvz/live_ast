@@ -52,7 +52,7 @@ module LiveAST
         return file if File.file? file
 
         $LOAD_PATH.each do |path|
-          target = path + "/" + file
+          target = File.join(path, file)
           return target if File.file? target
         end
         nil

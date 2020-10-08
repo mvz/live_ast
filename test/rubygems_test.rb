@@ -5,7 +5,7 @@ require_relative "../devel/levitate"
 
 class RubygemsTest < RegularTest
   def test_rubygems
-    lib = File.expand_path(File.dirname(__FILE__) + "/../lib")
+    lib = File.expand_path("../lib", File.dirname(__FILE__))
     extra_req =
       if defined?(LiveASTRipper) && LiveAST.parser == LiveASTRipper
         %{require 'live_ast_ripper'}

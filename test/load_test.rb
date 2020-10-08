@@ -80,7 +80,7 @@ class LoadFileTest < BaseTest
   end
 
   def test_verbose_respected
-    lib = File.expand_path(File.dirname(__FILE__) + "/../lib")
+    lib = File.expand_path("../lib", File.dirname(__FILE__))
 
     [
       # respects a loaded file setting $VERBOSE = true

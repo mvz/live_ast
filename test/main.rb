@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-$LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + "/../lib")
+$LOAD_PATH.unshift File.expand_path("../lib", File.dirname(__FILE__))
 
 # require first for stdlib_test
 require "pp"
@@ -68,7 +68,7 @@ end
 class BaseTest < JLMiniTest
   include LiveAST.parser::Test
 
-  DATA_DIR = File.expand_path(File.dirname(__FILE__) + "/data")
+  DATA_DIR = File.expand_path("data", File.dirname(__FILE__))
 
   def self.stdlib_has_source?
     RUBY_ENGINE != "jruby"
@@ -76,7 +76,7 @@ class BaseTest < JLMiniTest
 
   def temp_file(code, basename = nil)
     basename ||= ("a".."z").to_a.shuffle.join + ".rb"
-    path = DATA_DIR + "/" + basename
+    path = File.join(DATA_DIR, basename)
 
     write_file path, code if code
     begin
