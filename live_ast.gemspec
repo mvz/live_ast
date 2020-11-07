@@ -31,8 +31,10 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "binding_of_caller", "~> 0.8.0"
   spec.add_development_dependency "minitest", "~> 5.0"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rdoc"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "rdoc", "~> 6.2"
+  spec.add_development_dependency "rubocop", "~> 1.0.0"
+  spec.add_development_dependency "rubocop-performance", "~> 1.8.1"
 
   spec.rdoc_options = ["--main", "README.rdoc",
                        "--title", "LiveAST: Live Abstract Syntax Trees",
