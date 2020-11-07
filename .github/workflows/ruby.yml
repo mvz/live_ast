@@ -17,9 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        ruby: [2.4, 2.5, 2.6, 2.7, head]
-
-    continue-on-error: ${{ endsWith(matrix.ruby, 'head') }}
+        ruby: [2.4, 2.5, 2.6, 2.7]
 
     steps:
     - uses: actions/checkout@v2
@@ -30,3 +28,17 @@ jobs:
         bundler-cache: true
     - name: Run tests
       run: bundle exec rake
+
+  rubocop:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+        bundler-cache: true
+    - name: Run RuboCop
+      run: bundle exec rubocop -P
