@@ -198,10 +198,10 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   def test_instance_eval_arg_error_with_block
     orig = assert_raises ArgumentError do
-      Object.new.live_ast_original_instance_eval(3, 4, 5) {}
+      Object.new.live_ast_original_instance_eval(3, 4, 5) { nil }
     end
     live = assert_raises ArgumentError do
-      Object.new.instance_eval(3, 4, 5) {}
+      Object.new.instance_eval(3, 4, 5) { nil }
     end
     assert_equal orig.message, live.message
   end
