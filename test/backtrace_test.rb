@@ -123,14 +123,14 @@ define_unsorted_test_case "BacktraceTest", RegularTest do
     3.times do
       orig = eval %{
 
-        lambda { #{code} }
+        lambda { #{code} } # lambda { foo }
 
 
       }, binding, "somewhere", 1000
 
       live = ast_eval %{
 
-          lambda { #{code} }
+          lambda { #{code} } # lambda { foo }
 
 
       }, binding, "somewhere", 1000

@@ -70,12 +70,12 @@ class ErrorTest < RegularTest
     end
   end
 
-  def test_reload_with_raw_eval_1
+  def test_reload_with_raw_eval_one
     ast_eval("lambda { }", binding)
     eval("lambda { }")
   end
 
-  def test_reload_with_raw_eval_2
+  def test_reload_with_raw_eval_two
     c = ast_eval %{
       Class.new do
         def f

@@ -127,7 +127,7 @@ class ReplaceEvalTest < BaseTest
     self.class.class_eval do
       instance_methods(false).each do |m|
         remove_method(m)
-        define_method(m) {}
+        define_method(m) { nil }
       end
     end
   end
