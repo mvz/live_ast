@@ -10,61 +10,61 @@ if LiveAST.parser::Test.respond_to?(:unparser_matches_ruby2ruby?) &&
       require "live_ast/to_ruby"
     end
 
-    def test_lambda_0
+    def test_lambda_one
       src = %{lambda { "moo" }}
       dst = ast_eval(src, binding).to_ruby
       assert_equal src, dst
     end
 
-    def test_lambda_1
+    def test_lambda_two
       src = %{lambda { |x| (x ** 2) }}
       dst = ast_eval(src, binding).to_ruby
       assert_equal src, dst
     end
 
-    def test_lambda_2
+    def test_lambda_three
       src = %{lambda { |x, y| (x + y) }}
       dst = ast_eval(src, binding).to_ruby
       assert_equal src, dst
     end
 
-    def test_proc_0
+    def test_proc_one
       src = %{proc { "moo" }}
       dst = ast_eval(src, binding).to_ruby
       assert_equal src, dst
     end
 
-    def test_proc_1
+    def test_proc_two
       src = %{proc { |x| (x ** 2) }}
       dst = ast_eval(src, binding).to_ruby
       assert_equal src, dst
     end
 
-    def test_proc_2
+    def test_proc_three
       src = %{proc { |x, y| (x * y) }}
       dst = ast_eval(src, binding).to_ruby
       assert_equal src, dst
     end
 
-    def test_block_0
+    def test_block_one
       src = %{return_block { "moo" }}
       dst = ast_eval(src, binding).to_ruby
       assert_equal src, dst
     end
 
-    def test_block_1
+    def test_block_two
       src = %{return_block { |x| (x ** 2) }}
       dst = ast_eval(src, binding).to_ruby
       assert_equal src, dst
     end
 
-    def test_block_2
+    def test_block_three
       src = %{return_block { |x, y| (x - y) }}
       dst = ast_eval(src, binding).to_ruby
       assert_equal src, dst
     end
 
-    def test_method_0
+    def test_method_one
       src = %{def f\n  "moo"\nend}
       dst = Class.new do
         ast_eval(src, binding)
@@ -72,7 +72,7 @@ if LiveAST.parser::Test.respond_to?(:unparser_matches_ruby2ruby?) &&
       assert_equal src, dst
     end
 
-    def test_method_1
+    def test_method_two
       src = %{def f(x)\n  (x ** 2)\nend}
       dst = Class.new do
         ast_eval(src, binding)
@@ -80,7 +80,7 @@ if LiveAST.parser::Test.respond_to?(:unparser_matches_ruby2ruby?) &&
       assert_equal src, dst
     end
 
-    def test_method_2
+    def test_method_three
       src = %{def f(x, y)\n  (x / y)\nend}
       dst = Class.new do
         ast_eval(src, binding)

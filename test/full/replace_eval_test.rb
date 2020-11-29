@@ -71,7 +71,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
     assert_equal 33, RESULT[:new]
   end
 
-  def test_const_lookup_2
+  def test_const_lookup_two
     Class.new do
       eval %{
         def f
@@ -108,7 +108,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
     end
   end
 
-  def test_const_lookup_3
+  def test_const_lookup_three
     DEFINE_QS.call
     Q::R.new.f
     S::T.new.f
