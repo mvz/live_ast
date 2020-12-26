@@ -1,8 +1,12 @@
 = live_ast Changes
 
-== Unreleased
+== Version 2.0.0
 
-* use bindings gem instead of binding_of_caller
+* Breaking change: Use bindings gem instead of binding_of_caller.
+  If you've been using the full integration mode, you will have to replace
+  binding_of_caller with bindings.
+* Add support for Ruby 3.0
+* Drop support for Ruby 2.3, 2.4 and 2.5
 
 == Version 1.3.2
 
