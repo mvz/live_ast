@@ -10,7 +10,7 @@ AllCops:
     - 'devel/levitate_config.rb'
     - 'vendor/**/*'
   NewCops: enable
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.6
 
 # Make BeginEndAlignment behavior match EndAlignment
 Layout/BeginEndAlignment:
