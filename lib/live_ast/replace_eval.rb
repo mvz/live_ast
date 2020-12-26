@@ -67,7 +67,7 @@ class Binding
   alias live_ast_original_binding_eval eval
 
   def eval(*args)
-    LiveAST.eval(args[0], self, *args[1..-1])
+    LiveAST.eval(args[0], self, *args[1..])
   end
 end
 
