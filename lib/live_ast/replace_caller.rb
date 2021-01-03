@@ -9,8 +9,6 @@ module Kernel
   def caller(*args)
     c = live_ast_original_caller(*args)
     c.shift
-    d = []
-    c.each { |s| d << s.gsub(/\|ast@.*:(\d)/,':\1') }
-    d
+    c.map { |line| LiveAST.strip_token line }
   end
 end
