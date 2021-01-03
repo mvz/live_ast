@@ -8,6 +8,7 @@ module Kernel
   alias live_ast_original_caller caller
   def caller(*args)
     c = live_ast_original_caller(*args)
+    c.shift
     d = []
     c.each { |s| d << s.gsub(/\|ast@.*:(\d)/,':\1') }
     d
