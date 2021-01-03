@@ -8,8 +8,7 @@ module Kernel
   alias live_ast_original_caller caller
   def caller(*args)
     c = live_ast_original_caller(*args)
-    d = []
-    c.each { |s| d << s.gsub(/\|ast@.*:(\d)/,':\1') }
-    d
+    c.shift
+    c.map { |line| LiveAST.strip_token line }
   end
 end
