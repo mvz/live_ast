@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rdoc", "~> 6.2"
-  spec.add_development_dependency "rubocop", "~> 1.7.0"
+  spec.add_development_dependency "rubocop", "~> 1.8.0"
   spec.add_development_dependency "rubocop-performance", "~> 1.9.1"
 
   spec.rdoc_options = ["--main", "README.rdoc",
