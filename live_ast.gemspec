@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rdoc", "~> 6.2"
   spec.add_development_dependency "rubocop", "~> 1.13.0"
-  spec.add_development_dependency "rubocop-performance", "~> 1.10.0"
+  spec.add_development_dependency "rubocop-performance", "~> 1.11.0"
 
   spec.rdoc_options = ["--main", "README.rdoc",
                        "--title", "LiveAST: Live Abstract Syntax Trees",
