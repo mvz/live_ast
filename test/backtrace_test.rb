@@ -9,21 +9,21 @@ define_unsorted_test_case "BacktraceTest", RegularTest do
   def test_raise_in_eval
     3.times do
       orig = exception_backtrace do
-        eval %{
+        eval <<~RUBY, binding, "somewhere", 1000
+
 
           raise
 
-
-        }, binding, "somewhere", 1000
+        RUBY
       end
 
       live = exception_backtrace do
-        ast_eval %{
+        ast_eval <<~RUBY, binding, "somewhere", 1000
+
 
           raise
 
-
-        }, binding, "somewhere", 1000
+        RUBY
       end
 
       assert_equal orig.first, live.first
@@ -34,21 +34,21 @@ define_unsorted_test_case "BacktraceTest", RegularTest do
   def test_raise_no_overrides
     3.times do
       orig = exception_backtrace do
-        eval %{
+        eval <<~RUBY, binding, __FILE__, (__LINE__ + 9)
 
 
           raise
 
-        }, binding, __FILE__, (__LINE__ + 9)
+        RUBY
       end
 
       live = exception_backtrace do
-        ast_eval %{
+        ast_eval <<~RUBY, binding
 
 
           raise
 
-        }, binding
+        RUBY
       end
 
       assert_equal orig.first, live.first
@@ -60,21 +60,21 @@ define_unsorted_test_case "BacktraceTest", RegularTest do
   def test_raise_using_overrides
     3.times do
       orig = exception_backtrace do
-        eval %{
+        eval <<~RUBY, binding, __FILE__, (__LINE__ + 9)
 
 
           raise
 
-        }, binding, __FILE__, (__LINE__ + 9)
+        RUBY
       end
 
       live = exception_backtrace do
-        ast_eval %{
+        ast_eval <<~RUBY, binding, __FILE__, __LINE__
 
 
           raise
 
-        }, binding, __FILE__, __LINE__
+        RUBY
       end
 
       assert_equal orig.first, live.first
@@ -86,21 +86,21 @@ define_unsorted_test_case "BacktraceTest", RegularTest do
   def test_raise_using_only_file_override
     3.times do
       orig = exception_backtrace do
-        eval %{
+        eval <<~RUBY, binding, __FILE__
 
 
           raise
 
-        }, binding, __FILE__
+        RUBY
       end
 
       live = exception_backtrace do
-        ast_eval %{
+        ast_eval <<~RUBY, binding, __FILE__
 
 
           raise
 
-        }, binding, __FILE__
+        RUBY
       end
 
       assert_equal orig.first, live.first

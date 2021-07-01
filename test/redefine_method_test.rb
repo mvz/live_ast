@@ -69,12 +69,12 @@ class RedefineMethodTest < RegularTest
     assert_equal "old C#f", C.new.f
 
     C.class_eval do
-      ast_eval %{
+      ast_eval <<~RUBY, binding
         remove_method :f
         define_method :f do |x, y|
           x * y
         end
-      }, binding
+      RUBY
     end
 
     assert_equal 12, C.new.f(3, 4)

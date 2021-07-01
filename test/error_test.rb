@@ -76,19 +76,19 @@ class ErrorTest < RegularTest
   end
 
   def test_reload_with_raw_eval_two
-    c = ast_eval %{
+    c = ast_eval <<~RUBY, binding
       Class.new do
         def f
         end
       end
-    }, binding
+    RUBY
     c.module_eval do
-      eval %{
+      eval <<~RUBY
         remove_method :f
         def f(x, y)
           x + y
         end
-      }
+      RUBY
       nil
     end
 

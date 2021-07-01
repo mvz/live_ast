@@ -16,21 +16,21 @@ class AstLoadTest < BaseTest
   end
 
   def noninvasive_ast_reload
-    code1 = %{
+    code1 = <<~RUBY
       class AstLoadTest::B
         def f
           "first B#f"
         end
       end
-    }
+    RUBY
 
-    code2 = %{
+    code2 = <<~RUBY
       class AstLoadTest::B
         def f
           "second B#f"
         end
       end
-    }
+    RUBY
 
     temp_file code1 do |file|
       load file

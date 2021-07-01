@@ -28,17 +28,17 @@ class LoadPathTest < BaseTest
   end
 
   def check_load
-    code1 = %{
+    code1 = <<~RUBY
       def hello
         "password"
       end
-    }
+    RUBY
 
-    code2 = %{
+    code2 = <<~RUBY
       def goodbye
         "bubbleboy"
       end
-    }
+    RUBY
 
     temp_file code1, "foo.rb" do |path|
       load "foo.rb"

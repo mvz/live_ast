@@ -15,21 +15,21 @@ define_unsorted_test_case "CallerTest", RegularTest do
   end
 
   def raise_after_eval(code, will_succeed)
-    orig = eval %{
-        foo = nil
-        1.times do
-          foo = caller
-        end
-        foo
-    }, binding, "somewhere", 1000
+    orig = eval <<~RUBY, binding, "somewhere", 1000
+      foo = nil
+      1.times do
+        foo = caller
+      end
+      foo
+    RUBY
 
-    live = ast_eval %{
-        foo = nil
-        1.times do
-          foo = caller
-        end
-        foo
-    }, binding, "somewhere", 1000
+    live = ast_eval <<~RUBY, binding, "somewhere", 1000
+      foo = nil
+      1.times do
+        foo = caller
+      end
+      foo
+    RUBY
 
     orig_top = orig.first
     live_top = live.first
@@ -38,10 +38,10 @@ define_unsorted_test_case "CallerTest", RegularTest do
 
     if will_succeed
       assert_equal orig_top, live_top
-      assert_match(/somewhere:1002/, live_top)
+      assert_match(/somewhere:1001/, live_top)
     else
       assert_not_equal orig_top, live_top
-      assert_match(/somewhere.*?:1002/, live_top)
+      assert_match(/somewhere.*?:1001/, live_top)
     end
   end
 end

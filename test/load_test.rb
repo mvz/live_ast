@@ -9,12 +9,12 @@ class LoadFileTest < BaseTest
   end
 
   def test_a_no_locals_created
-    code = %{
+    code = <<~RUBY
       LoadFileTest.flag = :code_a
       FOO = 77
       x = 33
       y = 99
-    }
+    RUBY
 
     temp_file code do |file|
       ret = LiveAST.load file
@@ -30,10 +30,10 @@ class LoadFileTest < BaseTest
   end
 
   def test_b_no_locals_modified
-    code = %{
+    code = <<~RUBY
       LoadFileTest.flag = :code_b
       r = 55
-    }
+    RUBY
 
     temp_file code do |file|
       eval("r = 66", TOPLEVEL_BINDING)
@@ -48,10 +48,10 @@ class LoadFileTest < BaseTest
   end
 
   def test_c_wrap
-    code = %{
+    code = <<~RUBY
       LoadFileTest.flag = :code_c
       ZOOM = 111
-    }
+    RUBY
 
     temp_file code do |file|
       ret = LiveAST.load file, true
@@ -69,9 +69,9 @@ class LoadFileTest < BaseTest
   end
 
   def test_d_empty_locals_list
-    code = %{
+    code = <<~RUBY
       LoadFileTest.from_d
-    }
+    RUBY
 
     temp_file code do |file|
       LiveAST.load file
