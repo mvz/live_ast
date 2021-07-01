@@ -11,11 +11,11 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   DEFINE_A = lambda do
     class A
-      eval %{
+      eval <<~RUBY
         def f(x, y)
           x**y
         end
-      }
+      RUBY
     end
   end
 
@@ -25,13 +25,13 @@ class FullReplaceEvalTest < ReplaceEvalTest
   end
 
   DEFINE_B = lambda do
-    eval %{
+    eval <<~RUBY
       class B
         def f(x, y)
           x / y
         end
       end
-    }
+    RUBY
   end
 
   def test_def_class
@@ -53,13 +53,13 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   DEFINE_P = lambda do
     class P
-      eval %{
+      eval <<~RUBY
         def f
           @x = 33
           RESULT[:old] = live_ast_original_eval("@x")
           RESULT[:new] = eval("@x")
         end
-      }
+      RUBY
     end
   end
 
@@ -73,13 +73,13 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   def test_const_lookup_two
     Class.new do
-      eval %{
+      eval <<~RUBY
         def f
           @x = 44
           RESULT[:old] = live_ast_original_eval("@x")
           RESULT[:new] = eval("@x")
         end
-      }
+      RUBY
     end.new.f
 
     assert_equal 44, RESULT[:old]
@@ -89,21 +89,21 @@ class FullReplaceEvalTest < ReplaceEvalTest
   DEFINE_QS = lambda do
     class Q
       class R
-        eval %{
+        eval <<~RUBY
           def f
             RESULT[:qr] = 55
           end
-        }
+        RUBY
       end
     end
 
     module S
       class T
-        eval %{
+        eval <<~RUBY
           def f
             RESULT[:st] = 66
           end
-        }
+        RUBY
       end
     end
   end
@@ -222,33 +222,33 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   def test_instance_eval_string
     orig = {}
-    orig.live_ast_original_instance_eval %{
+    orig.live_ast_original_instance_eval <<~RUBY
       self[:x] = 33
-    }
+    RUBY
     assert_equal 33, orig[:x]
 
     live = {}
-    live.instance_eval %{
+    live.instance_eval <<~RUBY
       self[:x] = 44
-    }
+    RUBY
     assert_equal 44, live[:x]
   end
 
   def test_instance_eval_binding
     x = 33
     orig = {}
-    orig.live_ast_original_instance_eval %{
+    orig.live_ast_original_instance_eval <<~RUBY
       self[:x] = x
       self[:f] = lambda { "f" }
-    }
+    RUBY
     assert_equal x, orig[:x]
 
     y = 44
     live = {}
-    live.instance_eval %{
+    live.instance_eval <<~RUBY
       self[:y] = y
       self[:g] = lambda { "g" }
-    }
+    RUBY
     assert_equal y, live[:y]
 
     assert_equal no_arg_block(:lambda, "g"), live[:g].to_ast
@@ -275,19 +275,19 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   def test_module_eval_string
     orig = Module.new
-    orig.live_ast_original_module_eval %{
+    orig.live_ast_original_module_eval <<~RUBY
       def f
         "orig"
       end
-    }
+    RUBY
     orig.instance_method(:f)
 
     live = Module.new
-    live.module_eval %{
+    live.module_eval <<~RUBY
       def h
         "live h"
       end
-    }
+    RUBY
     assert_equal no_arg_def(:h, "live h"),
                  live.instance_method(:h).to_ast
   end
@@ -296,28 +296,28 @@ class FullReplaceEvalTest < ReplaceEvalTest
     x = 33
     ignore(x)
     orig = Class.new
-    orig.live_ast_original_module_eval %{
+    orig.live_ast_original_module_eval <<~RUBY
       define_method :value do
         x
       end
       define_method :f do
         lambda { }
       end
-    }
+    RUBY
     assert_equal 33, orig.new.value
     assert orig.new.f.is_a?(Proc)
 
     y = 44
     ignore(y)
     live = Class.new
-    live.module_eval %{
+    live.module_eval <<~RUBY
       define_method :value do
         y
       end
       define_method :g do
         lambda { "g return" }
       end
-    }
+    RUBY
     assert_equal 44, live.new.value
     assert live.new.g.is_a?(Proc)
 
@@ -361,10 +361,10 @@ class FullReplaceEvalTest < ReplaceEvalTest
     end
 
     x = 5
-    eval %{
+    eval <<~RUBY
       assert_equal(3, eval(' eval("1 + 2") '))
       x = 6
-    }
+    RUBY
     assert_equal 6, x
   end
 
@@ -413,10 +413,10 @@ class FullReplaceEvalTest < ReplaceEvalTest
   end
 
   def test_basic_object
-    ::BasicObject.new.instance_eval %{
+    ::BasicObject.new.instance_eval <<~RUBY
       t = 33
       ::FullReplaceEvalTest::RESULT[:bo_test] = t + 44
-    }
+    RUBY
     assert_equal 77, RESULT[:bo_test]
   end
 

@@ -5,11 +5,11 @@ require_relative "main"
 class EvalTest < RegularTest
   DEFINE_A = lambda do
     class A
-      ast_eval %{
+      ast_eval <<~RUBY, binding
         def f(x, y)
           x + y
         end
-      }, binding
+      RUBY
     end
   end
 
@@ -26,13 +26,13 @@ class EvalTest < RegularTest
   end
 
   DEFINE_B = lambda do
-    ast_eval %{
+    ast_eval <<~RUBY, binding
       class B
         def f(x, y)
           x * y
         end
       end
-    }, binding
+    RUBY
   end
 
   def test_eval_class
@@ -49,11 +49,11 @@ class EvalTest < RegularTest
 
   def test_eval_method_anon
     klass = Class.new do
-      ast_eval %{
+      ast_eval <<~RUBY, binding
         def f(x, y)
           x - y
         end
-      }, binding
+      RUBY
     end
 
     assert_nil klass.name
@@ -67,13 +67,13 @@ class EvalTest < RegularTest
   end
 
   def test_eval_class_anon
-    klass = ast_eval %{
+    klass = ast_eval <<~RUBY, binding
       Class.new do
         def f(x, y)
           x / y
         end
       end
-    }, binding
+    RUBY
 
     assert_nil klass.name
     assert_equal klass, klass.instance_method(:f).owner
@@ -87,11 +87,11 @@ class EvalTest < RegularTest
 
   DEFINE_C = lambda do
     class C
-      ast_eval %{
+      ast_eval <<~RUBY, binding
         define_method :g do |x, y|
           x + y
         end
-      }, binding
+      RUBY
     end
   end
 
@@ -108,13 +108,13 @@ class EvalTest < RegularTest
   end
 
   DEFINE_D = lambda do
-    ast_eval %{
+    ast_eval <<~RUBY, binding
       class D
         define_method :g do |x, y|
           x * y
         end
       end
-    }, binding
+    RUBY
   end
 
   def test_eval_class_dynamic
@@ -131,11 +131,11 @@ class EvalTest < RegularTest
 
   def test_eval_method_anon_dynamic
     klass = Class.new do
-      ast_eval %{
+      ast_eval <<~RUBY, binding
         define_method :g do |x, y|
           x - y
         end
-      }, binding
+      RUBY
     end
 
     assert_nil klass.name
@@ -149,13 +149,13 @@ class EvalTest < RegularTest
   end
 
   def test_eval_class_anon_dynamic
-    klass = ast_eval %{
+    klass = ast_eval <<~RUBY, binding
       Class.new do
         define_method :g do |x, y|
           x / y
         end
       end
-    }, binding
+    RUBY
 
     assert_nil klass.name
     assert_equal klass, klass.instance_method(:g).owner
@@ -168,7 +168,7 @@ class EvalTest < RegularTest
   end
 
   DEFINE_GH = lambda do
-    ast_eval %{
+    ast_eval <<~RUBY, binding
       class G
         def f
           "G#f"
@@ -180,7 +180,7 @@ class EvalTest < RegularTest
           "H#g"
         end
       end
-    }, binding
+    RUBY
   end
 
   def test_reuse_string
@@ -204,11 +204,11 @@ class EvalTest < RegularTest
   def test_module_eval
     klass = Class.new
     klass.module_eval do
-      ast_eval %{
+      ast_eval <<~RUBY, binding
         def f
           "z"
         end
-      }, binding
+      RUBY
     end
 
     assert_equal klass, klass.instance_method(:f).owner
@@ -223,11 +223,11 @@ class EvalTest < RegularTest
   def test_singleton_class
     obj = Object.new
     obj.singleton_class.module_eval do
-      ast_eval %{
+      ast_eval <<~RUBY, binding
         def f
           "singleton"
         end
-      }, binding
+      RUBY
     end
 
     assert_equal no_arg_def(:f, "singleton"),

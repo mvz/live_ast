@@ -4,7 +4,7 @@ require_relative "main"
 
 class RecursiveEvalTest < RegularTest
   DEFINE = lambda do
-    ast_eval %{
+    ast_eval <<~RUBY, binding
       class A
         ast_eval %{
           def f
@@ -29,7 +29,7 @@ class RecursiveEvalTest < RegularTest
           }, binding
         }, binding
       end
-    }, binding
+    RUBY
   end
 
   def test_method

@@ -10,21 +10,21 @@ class ASTReloadTest < ReplaceEvalTest
   end
 
   def ast_reload
-    code1 = %{
+    code1 = <<~RUBY
       class ASTReloadTest::C
         def f
           "first C#f"
         end
       end
-    }
+    RUBY
 
-    code2 = %{
+    code2 = <<~RUBY
       class ASTReloadTest::C
         def f
           "second C#f"
         end
       end
-    }
+    RUBY
 
     temp_file code1 do |file|
       load file

@@ -10,21 +10,21 @@ class ReloadTest < BaseTest
   end
 
   def raw_reload
-    code1 = %{
+    code1 = <<~RUBY
       class ReloadTest::A
         def f
           "first A#f"
         end
       end
-    }
+    RUBY
 
-    code2 = %{
+    code2 = <<~RUBY
       class ReloadTest::A
         def f
           "second A#f"
         end
       end
-    }
+    RUBY
 
     temp_file code1 do |file|
       load file

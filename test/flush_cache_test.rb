@@ -34,10 +34,10 @@ define_unsorted_test_case "FlushCacheTest", RegularTest do
 
   def uncached_method_from_eval
     klass = Class.new do
-      ast_eval %{
+      ast_eval <<~RUBY, binding
         def f ; end
         def g ; end
-      }, binding
+      RUBY
     end
 
     LiveAST.flush_cache
@@ -49,10 +49,10 @@ define_unsorted_test_case "FlushCacheTest", RegularTest do
 
   def cached_method_from_eval
     klass = Class.new do
-      ast_eval %{
+      ast_eval <<~RUBY, binding
         def f ; end
         def g ; end
-      }, binding
+      RUBY
     end
 
     f_ast = klass.instance_method(:f).to_ast
@@ -81,12 +81,12 @@ define_unsorted_test_case "FlushCacheTest", RegularTest do
   end
 
   def flush_lambda
-    a, b = ast_eval %{
+    a, b = ast_eval <<~RUBY, binding
       [
         lambda { "aaa" },
         lambda { "bbb" },
       ]
-    }, binding
+    RUBY
 
     a_ast = a.to_ast
     assert_equal no_arg_block(:lambda, "aaa"), a_ast
