@@ -1,13 +1,19 @@
 ---
 - - :permit
   - MIT
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2017-07-24 20:08:46.554259829 Z
 - - :permit
   - ruby
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2017-07-24 20:08:52.221412221 Z
+- - :permit
+  - Simplified BSD
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-09-12 09:46:57.628591794 Z
