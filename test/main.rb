@@ -23,7 +23,7 @@ end
 class JLMiniTest < MiniTest::Test
   def self.test_methods
     default = super
-    onlies = default.select { |m| m =~ /__only\Z/ }
+    onlies = default.grep(/__only\Z/)
     if onlies.empty?
       default
     else
