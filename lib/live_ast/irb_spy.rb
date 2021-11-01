@@ -10,7 +10,7 @@ module LiveAST
       def code_at(line)
         code = +""
         checked_history[line..].each do |code_line|
-          code << code_line << "\n"
+          code += "#{code_line}\n"
           return code if can_parse code
         end
       end
