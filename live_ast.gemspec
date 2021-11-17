@@ -21,6 +21,8 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 2.6.0"
 
+  spec.metadata["rubygems_mfa_required"] = "true"
+
   spec.files = Dir["{devel,lib,test}/**/*.rb",
                    "*.rdoc",
                    "Rakefile"]
