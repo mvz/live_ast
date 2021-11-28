@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require File.join(File.dirname(__FILE__), "lib/live_ast/version.rb")
+require_relative "lib/live_ast/version"
 
 Gem::Specification.new do |spec|
   spec.name = "mvz-live_ast"
   spec.version = LiveAST::VERSION
   spec.authors = ["James M. Lawrence", "Matijs van Zuijlen"]
-  spec.email = "matijs@matijs.net"
+  spec.email = ["matijs@matijs.net"]
 
   spec.summary = "Live abstract syntax trees of methods and procs."
   spec.description = <<-DESC
