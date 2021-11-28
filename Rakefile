@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rake/clean"
+require "rake/manifest/task"
 require "bundler/gem_tasks"
 require "rake/testtask"
 require "rdoc/task"
@@ -57,6 +58,10 @@ RDoc::Task.new(:rdoc) do |t|
   t.title = "LiveAST: Live Abstract Syntax Trees"
   t.options += ["--visibility", "private"]
   t.rdoc_files.include("README.rdoc", "CHANGES.rdoc", "lib")
+end
+
+Rake::Manifest::Task.new do |t|
+  t.patterns = ["{lib}/**/*.rb", "*.rdoc"]
 end
 
 task default: "test:all"
