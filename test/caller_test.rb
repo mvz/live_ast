@@ -5,7 +5,7 @@ require_relative "main"
 # test for optional caller redefinition: unsort this TestCase from
 # other TestCases.
 
-define_unsorted_test_case "CallerTest", RegularTest do
+class CallerTest < RegularTest
   def test_replace_caller
     raise_after_eval("caller", false)
 
