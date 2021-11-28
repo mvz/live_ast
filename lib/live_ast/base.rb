@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "thread"
-
 require "live_ast/common"
 require "live_ast/reader"
 require "live_ast/evaler"

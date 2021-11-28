@@ -11,12 +11,6 @@ Lint/NestedMethodDefinition:
     - 'test/full/replace_eval_test.rb'
 
 # Cop supports --auto-correct.
-Lint/RedundantRequireStatement:
-  Exclude:
-    - 'lib/live_ast/base.rb'
-    - 'test/thread_test.rb'
-
-# Cop supports --auto-correct.
 Lint/UselessTimes:
   Exclude:
     - 'test/full/replace_eval_test.rb'
