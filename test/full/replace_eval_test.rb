@@ -351,14 +351,10 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   def test_eval_not_hosed
     assert_equal 3, eval("1 + 2")
-    1.times do
-      assert_equal 3, eval("1 + 2")
-    end
+    assert_equal 3, eval("1 + 2")
 
     assert_equal(3, eval(%{ eval("1 + 2") }))
-    1.times do
-      assert_equal(3, eval(%{ eval("1 + 2") }))
-    end
+    assert_equal(3, eval(%{ eval("1 + 2") }))
 
     x = 5
     eval <<~RUBY
