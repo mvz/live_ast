@@ -30,8 +30,6 @@ Gem::Specification.new do |spec|
   spec.extra_rdoc_files = ["README.rdoc", "CHANGES.rdoc"]
   spec.require_paths = ["lib"]
 
-  spec.test_files = Dir["test/**/*.rb"]
-
   spec.add_runtime_dependency "ruby2ruby", "~> 2.4.0"
   spec.add_runtime_dependency "ruby_parser", "~> 3.14"
 
