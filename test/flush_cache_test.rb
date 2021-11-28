@@ -5,7 +5,7 @@ require_relative "main"
 # test for flushing side-effects: unsort this TestCase from other
 # TestCases.
 
-define_unsorted_test_case "FlushCacheTest", RegularTest do
+class FlushCacheTest < RegularTest
   def test_cache
     # testing global state of cache -- must be sequential
     uncached_method_from_require

@@ -14,12 +14,6 @@ $VERBOSE = true
 
 require "live_ast/base"
 
-def define_unsorted_test_case(name, superclass, &block)
-  klass = Class.new superclass, &block
-  letter = ("A".."Z").to_a[rand(26)]
-  Object.const_set "#{letter}#{name}", klass
-end
-
 class JLMiniTest < MiniTest::Test
   def self.test_methods
     default = super

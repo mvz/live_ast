@@ -5,7 +5,7 @@ require_relative "main"
 # test for raise redefinition side-effects: unsort this TestCase from
 # other TestCases.
 
-define_unsorted_test_case "BacktraceTest", RegularTest do
+class BacktraceTest < RegularTest
   def test_raise_in_eval
     3.times do
       orig = exception_backtrace do
