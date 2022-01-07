@@ -1,5 +1,9 @@
 inherit_from: .rubocop_todo.yml
 
+inherit_mode:
+  merge:
+    - Exclude
+
 require:
   - rubocop-packaging
   - rubocop-performance
@@ -9,7 +13,6 @@ AllCops:
     - 'test/encoding_test/*.rb'
     - 'devel/levitate.rb'
     - 'devel/levitate_config.rb'
-    - 'vendor/**/*'
   NewCops: enable
   TargetRubyVersion: 2.6
 
