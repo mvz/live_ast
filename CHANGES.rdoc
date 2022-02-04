@@ -1,5 +1,10 @@
 = live_ast Changes
 
+== Version 2.1.0
+
+* Add support for Ruby 3.1
+* Add `live_ast/replace_caller` similar to `replace_raise`
+
 == Version 2.0.0
 
 * Breaking change: Use bindings gem instead of binding_of_caller.
