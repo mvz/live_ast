@@ -7,6 +7,7 @@ inherit_mode:
 require:
   - rubocop-packaging
   - rubocop-performance
+  - rubocop-rake
 
 AllCops:
   Exclude:
