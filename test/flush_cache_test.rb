@@ -15,6 +15,8 @@ class FlushCacheTest < RegularTest
     flush_lambda
   end
 
+  private
+
   def uncached_method_from_require
     klass = Class.new do
       def f; end
