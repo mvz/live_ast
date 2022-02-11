@@ -18,7 +18,7 @@ class LoadFileTest < BaseTest
 
     temp_file code do |file|
       ret = LiveAST.load file
-      assert_equal true, ret
+      assert ret
       assert_equal :code_a, LoadFileTest.flag
 
       assert_raises NameError do
@@ -39,7 +39,7 @@ class LoadFileTest < BaseTest
       eval("r = 66", TOPLEVEL_BINDING)
 
       ret = LiveAST.load file
-      assert_equal true, ret
+      assert ret
       assert_equal :code_b, LoadFileTest.flag
 
       actual = eval("r", TOPLEVEL_BINDING)
@@ -55,7 +55,7 @@ class LoadFileTest < BaseTest
 
     temp_file code do |file|
       ret = LiveAST.load file, true
-      assert_equal true, ret
+      assert ret
       assert_equal :code_c, LoadFileTest.flag
 
       assert_raises NameError do

@@ -5,16 +5,16 @@ require "main"
 class NoninvasiveTest < BaseTest
   def test_no_clutter
     [Method, UnboundMethod, Proc].each do |klass|
-      assert !klass.instance_methods.include?(:to_ast)
-      assert !klass.instance_methods.include?(:to_ruby)
+      refute_includes klass.instance_methods, :to_ast
+      refute_includes klass.instance_methods, :to_ruby
     end
 
-    assert !respond_to?(:ast_eval)
-    assert !private_methods.include?(:ast_eval)
-    assert !Kernel.respond_to?(:ast_eval)
-    assert !respond_to?(:ast_load)
-    assert !private_methods.include?(:ast_load)
-    assert !Kernel.respond_to?(:ast_load)
+    refute_respond_to self, :ast_eval
+    refute_includes private_methods, :ast_eval
+    refute_respond_to Kernel, :ast_eval
+    refute_respond_to self, :ast_load
+    refute_includes private_methods, :ast_load
+    refute_respond_to Kernel, :ast_load
   end
 
   DEFINE_A = lambda do

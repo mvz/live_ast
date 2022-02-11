@@ -8,7 +8,7 @@ class AstLoadTest < BaseTest
   include FileUtils
 
   def test_defines_ast_load
-    assert private_methods.include?(:ast_load)
+    assert_includes private_methods, :ast_load
   end
 
   def test_reloading

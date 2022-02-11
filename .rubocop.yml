@@ -5,8 +5,10 @@ inherit_mode:
     - Exclude
 
 require:
+  - rubocop-minitest
   - rubocop-packaging
   - rubocop-performance
+  - rubocop-rake
 
 AllCops:
   Exclude:
