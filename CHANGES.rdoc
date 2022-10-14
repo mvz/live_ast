@@ -1,5 +1,9 @@
 = live_ast Changes
 
+== Version 2.1.1
+
+* Loosen dependency on ruby2ruby
+
 == Version 2.1.0
 
 * Add support for Ruby 3.1
