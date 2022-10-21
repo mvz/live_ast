@@ -73,6 +73,7 @@ module LiveAST
       def find_ast(*location)
         raise ASTNotFoundError unless location.size == 2
         raise RawEvalError if location.first == "(eval)"
+        raise ASTNotFoundError if location.first == "<internal:prelude>"
 
         ast = fetch_from_cache(*location)
         raise MultipleDefinitionsOnSameLineError if ast == :multiple

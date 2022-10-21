@@ -3,7 +3,6 @@
 $LOAD_PATH.unshift File.expand_path("../lib", File.dirname(__FILE__))
 
 # require first for stdlib_test
-require "pp"
 require "find"
 require "fileutils"
 
