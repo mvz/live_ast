@@ -25,17 +25,6 @@ class JLMiniTest < MiniTest::Test
     end
   end
 
-  def delim(char)
-    "\n#{char * 72}\n"
-  end
-
-  def mu_pp(obj)
-    +"" <<
-      delim("_") <<
-      obj.pretty_inspect.chomp <<
-      delim("=")
-  end
-
   def unfixable
     yield
     raise "claimed to be unfixable, but assertion succeeded"
