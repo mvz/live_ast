@@ -1,5 +1,9 @@
 = live_ast Changes
 
+== Version 2.1.2
+
+* Raise informative acception for methods defined in the prelude
+
 == Version 2.1.1
 
 * Loosen dependency on ruby2ruby
