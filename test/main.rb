@@ -3,7 +3,6 @@
 $LOAD_PATH.unshift File.expand_path("../lib", File.dirname(__FILE__))
 
 # require first for stdlib_test
-require "pp"
 require "find"
 require "fileutils"
 
@@ -24,17 +23,6 @@ class JLMiniTest < MiniTest::Test
       puts "\nNOTE: running ONLY *__only tests for #{self}"
       onlies
     end
-  end
-
-  def delim(char)
-    "\n#{char * 72}\n"
-  end
-
-  def mu_pp(obj)
-    +"" <<
-      delim("_") <<
-      obj.pretty_inspect.chomp <<
-      delim("=")
   end
 
   def unfixable
