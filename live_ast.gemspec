@@ -34,7 +34,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "ruby2ruby", ">= 2.4", "< 2.6"
   spec.add_dependency "ruby_parser", "~> 3.14"
 
-  spec.add_development_dependency "bindings", "~> 1.0.0"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "minitest-focus", "~> 1.4"
   spec.add_development_dependency "rake", "~> 13.0"
