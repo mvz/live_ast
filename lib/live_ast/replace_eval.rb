@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 require "live_ast/base"
-require "bindings"
+begin
+  require "bindings"
+rescue LoadError
+  require "binding_of_caller"
+end
 
 module LiveAST
   module ReplaceEval
@@ -57,7 +61,7 @@ module Kernel
     LiveAST::Common.check_arity(args, 1..4)
     LiveAST.eval(
       args[0],
-      args[1] || Binding.of_caller(1),
+      args[1] || binding.of_caller(1),
       *LiveAST::Common.location_for_eval(*args[1..3]))
   end
 end
@@ -68,6 +72,12 @@ class Binding
 
   def eval(*args)
     LiveAST.eval(args[0], self, *args[1..])
+  end
+
+  unless method_defined? :of_caller
+    def of_caller(num)
+      ::Binding.of_caller(num + 1)
+    end
   end
 end
 
@@ -82,7 +92,7 @@ class BasicObject
       ::LiveAST::ReplaceEval
         .module_or_instance_eval(:instance,
                                  self,
-                                 ::Binding.of_caller(1),
+                                 ::Kernel.binding.of_caller(1),
                                  args)
     end
   end
@@ -97,7 +107,7 @@ class Module
       live_ast_original_module_eval(*args, &block)
     else
       LiveAST::ReplaceEval
-        .module_or_instance_eval(:module, self, Binding.of_caller(1), args)
+        .module_or_instance_eval(:module, self, binding.of_caller(1), args)
     end
   end
 
