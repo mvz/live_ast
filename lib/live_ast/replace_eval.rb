@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 require "live_ast/base"
-require "bindings"
+begin
+  require "bindings"
+rescue LoadError
+  require "binding_of_caller"
+end
 
 module LiveAST
   module ReplaceEval
@@ -56,7 +60,7 @@ module Kernel
   def eval(string, binding = nil, filename = nil, lineno = nil)
     LiveAST.eval(
       string,
-      binding || Binding.of_caller(1),
+      binding || binding.of_caller(1),
       filename, lineno)
   end
 end
@@ -67,6 +71,12 @@ class Binding
 
   def eval(string, filename = nil, lineno = nil)
     LiveAST.eval(string, self, filename, lineno)
+  end
+
+  unless method_defined? :of_caller
+    def of_caller(num)
+      ::Binding.of_caller(num + 1)
+    end
   end
 end
 
@@ -83,7 +93,7 @@ class BasicObject
       ::LiveAST::ReplaceEval
         .module_or_instance_eval(:instance,
                                  self,
-                                 ::Binding.of_caller(1),
+                                 ::Kernel.binding.of_caller(1),
                                  args)
     end
   end
@@ -100,7 +110,7 @@ class Module
       live_ast_original_module_eval(*args, &block)
     else
       LiveAST::ReplaceEval
-        .module_or_instance_eval(:module, self, Binding.of_caller(1), args)
+        .module_or_instance_eval(:module, self, binding.of_caller(1), args)
     end
   end
 
