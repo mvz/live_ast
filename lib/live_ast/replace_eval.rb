@@ -4,7 +4,11 @@ require "live_ast/base"
 begin
   require "bindings"
 rescue LoadError
-  require "binding_of_caller"
+  begin
+    require "binding_of_caller"
+  rescue LoadError
+    require "boc"
+  end
 end
 
 module LiveAST
