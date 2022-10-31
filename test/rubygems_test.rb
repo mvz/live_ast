@@ -22,6 +22,7 @@ class RubygemsTest < RegularTest
       }
       p f.to_ast
     }
+
     assert_equal no_arg_block(:lambda, "abc").to_s, result.chomp
   end
 end

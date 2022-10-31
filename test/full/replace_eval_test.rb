@@ -21,6 +21,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   def test_a_def_method
     DEFINE_A.call
+
     assert_equal binop_def(:f, :**), A.instance_method(:f).to_ast
   end
 
@@ -36,6 +37,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   def test_def_class
     DEFINE_B.call
+
     assert_equal "FullReplaceEvalTest::B", B.name
     assert_equal binop_def(:f, :/), B.instance_method(:f).to_ast
   end
@@ -112,6 +114,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
     DEFINE_QS.call
     Q::R.new.f
     S::T.new.f
+
     assert_equal 55, RESULT[:qr]
     assert_equal 66, RESULT[:st]
   end
@@ -124,6 +127,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
       live = assert_raises ArgumentError do
         eval(*args)
       end
+
       assert_equal orig.message, live.message
     end
   end
@@ -136,6 +140,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
       live = assert_raises ArgumentError do
         Kernel.eval(*args)
       end
+
       assert_equal orig.message, live.message
     end
   end
@@ -148,6 +153,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
       live = assert_raises ArgumentError do
         Object.new.instance_eval(*args)
       end
+
       assert_equal orig.message, live.message
     end
 
@@ -157,6 +163,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
     live = assert_raises TypeError do
       Object.new.instance_eval(nil)
     end
+
     assert_equal orig.message, live.message
 
     [[nil], [Object.new], [3], [4, 3, 2], (1..10).to_a].each do |args|
@@ -166,6 +173,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
       live = assert_raises ArgumentError, TypeError do
         Object.new.instance_eval(*args)
       end
+
       assert_equal orig.message, live.message
       assert_equal orig.class, live.class
     end
@@ -203,6 +211,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
     live = assert_raises ArgumentError do
       Object.new.instance_eval(3, 4, 5) { nil }
     end
+
     assert_equal orig.message, live.message
   end
 
@@ -211,12 +220,14 @@ class FullReplaceEvalTest < ReplaceEvalTest
     orig.live_ast_original_instance_eval do
       self[:x] = 33
     end
+
     assert_equal 33, orig[:x]
 
     live = {}
     live.instance_eval do
       self[:x] = 44
     end
+
     assert_equal 44, live[:x]
   end
 
@@ -225,12 +236,14 @@ class FullReplaceEvalTest < ReplaceEvalTest
     orig.live_ast_original_instance_eval <<~RUBY
       self[:x] = 33
     RUBY
+
     assert_equal 33, orig[:x]
 
     live = {}
     live.instance_eval <<~RUBY
       self[:x] = 44
     RUBY
+
     assert_equal 44, live[:x]
   end
 
@@ -241,6 +254,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
       self[:x] = x
       self[:f] = lambda { "f" }
     RUBY
+
     assert_equal x, orig[:x]
 
     y = 44
@@ -249,6 +263,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
       self[:y] = y
       self[:g] = lambda { "g" }
     RUBY
+
     assert_equal y, live[:y]
 
     assert_equal no_arg_block(:lambda, "g"), live[:g].to_ast
@@ -271,6 +286,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
         "live"
       end
     end
+
     assert_equal no_arg_def(:f, "live"),
                  live.instance_method(:f).to_ast
   end
@@ -282,6 +298,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
         "orig"
       end
     RUBY
+
     refute_nil orig.instance_method(:f)
 
     live = Module.new
@@ -290,6 +307,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
         "live h"
       end
     RUBY
+
     assert_equal no_arg_def(:h, "live h"),
                  live.instance_method(:h).to_ast
   end
@@ -306,6 +324,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
         lambda { }
       end
     RUBY
+
     assert_equal 33, orig.new.value
     assert orig.new.f.is_a?(Proc)
 
@@ -320,6 +339,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
         lambda { "g return" }
       end
     RUBY
+
     assert_equal 44, live.new.value
     assert live.new.g.is_a?(Proc)
 
@@ -340,6 +360,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
     end
 
     live.first.sub!(/#{Regexp.quote LiveAST::Linker::REVISION_TOKEN}.*\Z/, "")
+
     assert_equal orig, live
     assert_equal ["test", 102], live
   end
@@ -363,6 +384,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
       assert_equal(3, eval(' eval("1 + 2") '))
       x = 6
     RUBY
+
     assert_equal 6, x
   end
 
@@ -415,6 +437,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
       t = 33
       ::FullReplaceEvalTest::RESULT[:bo_test] = t + 44
     RUBY
+
     assert_equal 77, RESULT[:bo_test]
   end
 

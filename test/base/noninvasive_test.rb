@@ -29,6 +29,7 @@ class NoninvasiveTest < BaseTest
     DEFINE_A.call
 
     expected = no_arg_def(:f, "A#f")
+
     assert_equal expected, LiveAST.ast(A.instance_method(:f))
     assert_equal expected, LiveAST.ast(A.new.method(:f))
   end
@@ -44,6 +45,7 @@ class NoninvasiveTest < BaseTest
 
     expected = binop_block(:lambda, :/)
     result = LiveAST.ast(LiveAST.eval(code, binding))
+
     assert_equal expected, result
   end
 

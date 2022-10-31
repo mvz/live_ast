@@ -91,6 +91,7 @@ class FlushCacheTest < RegularTest
     RUBY
 
     a_ast = a.to_ast
+
     assert_equal no_arg_block(:lambda, "aaa"), a_ast
 
     LiveAST.flush_cache

@@ -27,14 +27,17 @@ class AllEncodingTest < RegularTest
       self.class.class_eval { include EncodingTest }
 
       str = send("#{abbr}_string")
+
       assert_equal name, str.encoding.to_s
 
       ast = EncodingTest.instance_method("#{abbr}_string").to_ast
+
       assert_equal "UTF-8", no_arg_def_return(ast).encoding.to_s
 
       LiveAST.load "./test/encoding_test/#{abbr}.rb"
 
       ast = EncodingTest.instance_method("#{abbr}_string").to_ast
+
       assert_equal "UTF-8", no_arg_def_return(ast).encoding.to_s
     end
   end
@@ -48,6 +51,7 @@ class AllEncodingTest < RegularTest
     end
     # inconsistent punctuation from Ruby
     re = /\Aunknown encoding name\s*[-:]\s*feynman-diagram\Z/
+
     assert_match re, orig.message
     assert_match re, live.message
   end

@@ -15,6 +15,7 @@ class EvalTest < RegularTest
 
   def test_eval_method
     DEFINE_A.call
+
     assert_equal "#{self.class}::A", A.name
     assert_equal A, A.instance_method(:f).owner
 
@@ -37,6 +38,7 @@ class EvalTest < RegularTest
 
   def test_eval_class
     DEFINE_B.call
+
     assert_equal "#{self.class}::B", B.name
     assert_equal B, B.instance_method(:f).owner
 
@@ -97,6 +99,7 @@ class EvalTest < RegularTest
 
   def test_eval_method_dynamic
     DEFINE_C.call
+
     assert_equal "#{self.class}::C", C.name
     assert_equal C, C.instance_method(:g).owner
 
@@ -119,6 +122,7 @@ class EvalTest < RegularTest
 
   def test_eval_class_dynamic
     DEFINE_D.call
+
     assert_equal "#{self.class}::D", D.name
     assert_equal D, D.instance_method(:g).owner
 
@@ -185,6 +189,7 @@ class EvalTest < RegularTest
 
   def test_reuse_string
     DEFINE_GH.call
+
     assert_equal "#{self.class}::G", G.name
     assert_equal "#{self.class}::H", H.name
 
