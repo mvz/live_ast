@@ -13,54 +13,63 @@ if LiveAST.parser::Test.respond_to?(:unparser_matches_ruby2ruby?) &&
     def test_lambda_one
       src = %{lambda { "moo" }}
       dst = ast_eval(src, binding).to_ruby
+
       assert_equal src, dst
     end
 
     def test_lambda_two
       src = %{lambda { |x| (x ** 2) }}
       dst = ast_eval(src, binding).to_ruby
+
       assert_equal src, dst
     end
 
     def test_lambda_three
       src = %{lambda { |x, y| (x + y) }}
       dst = ast_eval(src, binding).to_ruby
+
       assert_equal src, dst
     end
 
     def test_proc_one
       src = %{proc { "moo" }}
       dst = ast_eval(src, binding).to_ruby
+
       assert_equal src, dst
     end
 
     def test_proc_two
       src = %{proc { |x| (x ** 2) }}
       dst = ast_eval(src, binding).to_ruby
+
       assert_equal src, dst
     end
 
     def test_proc_three
       src = %{proc { |x, y| (x * y) }}
       dst = ast_eval(src, binding).to_ruby
+
       assert_equal src, dst
     end
 
     def test_block_one
       src = %{return_block { "moo" }}
       dst = ast_eval(src, binding).to_ruby
+
       assert_equal src, dst
     end
 
     def test_block_two
       src = %{return_block { |x| (x ** 2) }}
       dst = ast_eval(src, binding).to_ruby
+
       assert_equal src, dst
     end
 
     def test_block_three
       src = %{return_block { |x, y| (x - y) }}
       dst = ast_eval(src, binding).to_ruby
+
       assert_equal src, dst
     end
 
@@ -69,6 +78,7 @@ if LiveAST.parser::Test.respond_to?(:unparser_matches_ruby2ruby?) &&
       dst = Class.new do
         ast_eval(src, binding)
       end.instance_method(:f).to_ruby
+
       assert_equal src, dst
     end
 
@@ -77,6 +87,7 @@ if LiveAST.parser::Test.respond_to?(:unparser_matches_ruby2ruby?) &&
       dst = Class.new do
         ast_eval(src, binding)
       end.instance_method(:f).to_ruby
+
       assert_equal src, dst
     end
 
@@ -85,6 +96,7 @@ if LiveAST.parser::Test.respond_to?(:unparser_matches_ruby2ruby?) &&
       dst = Class.new do
         ast_eval(src, binding)
       end.instance_method(:f).to_ruby
+
       assert_equal src, dst
     end
 

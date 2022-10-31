@@ -34,6 +34,7 @@ class RecursiveEvalTest < RegularTest
 
   def test_method
     defined?(A) or DEFINE.call
+
     assert_equal "#{self.class}::A", A.name
 
     assert_equal binop_def(:f, :+),
@@ -45,6 +46,7 @@ class RecursiveEvalTest < RegularTest
 
   def test_lambda
     defined?(A) or DEFINE.call
+
     assert_equal "#{self.class}::A", A.name
 
     assert_equal binop_block(:lambda, :*),

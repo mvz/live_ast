@@ -17,6 +17,7 @@ class CovertDefineMethodTest < RegularTest
 
   def test_covert_define_method
     DEFINE.call
+
     assert_equal 77, A.new.h(33, 44)
 
     assert_equal binop_define_method(:h, :+, :my_def),

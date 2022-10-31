@@ -42,11 +42,13 @@ class LoadPathTest < BaseTest
 
     temp_file code1, "foo.rb" do |path|
       load "foo.rb"
+
       assert_equal "password", hello
 
       write_file path, code2
 
       LiveAST.load "foo.rb"
+
       assert_equal "bubbleboy", goodbye
     end
   ensure
@@ -58,6 +60,7 @@ class LoadPathTest < BaseTest
     error = assert_raises LoadError do
       LiveAST.load file
     end
+
     assert_equal "cannot load such file -- #{file}", error.message
   end
 

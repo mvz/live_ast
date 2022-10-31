@@ -53,6 +53,7 @@ class BacktraceTest < RegularTest
 
       assert_equal orig.first, live.first
       here = Regexp.quote __FILE__
+
       assert_match(/#{here}/, live.first)
     end
   end
@@ -79,6 +80,7 @@ class BacktraceTest < RegularTest
 
       assert_equal orig.first, live.first
       here = Regexp.quote __FILE__
+
       assert_match(/#{here}/, live.first)
     end
   end
@@ -105,6 +107,7 @@ class BacktraceTest < RegularTest
 
       assert_equal orig.first, live.first
       here = Regexp.quote __FILE__
+
       assert_match(/#{here}/, live.first)
     end
   end

@@ -29,6 +29,7 @@ class IRBTest < RegularTest
     with_module(Object, :IRB) do
       expected = no_arg_def(:bar, "bar")
       result = LiveAST::Linker.fetch_from_cache("(irb)", 1)
+
       assert_equal expected, result
     end
   end
@@ -37,6 +38,7 @@ class IRBTest < RegularTest
     with_module(Object, :IRB) do
       expected = no_arg_def(:foo, "foo")
       result = LiveAST::Linker.fetch_from_cache("(irb)", 3)
+
       assert_equal expected, result
     end
   end

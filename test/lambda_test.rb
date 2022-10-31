@@ -9,6 +9,7 @@ class LambdaTest < RegularTest
     }
 
     expected = binop_block(:return_block, :+)
+
     assert_equal expected, block.to_ast
   end
 
@@ -18,6 +19,7 @@ class LambdaTest < RegularTest
     end
 
     expected = binop_block(:return_block, :*)
+
     assert_equal expected, block.to_ast
   end
 
@@ -25,6 +27,7 @@ class LambdaTest < RegularTest
     a = lambda { |x, y| x - y }
 
     expected = binop_block(:lambda, :-)
+
     assert_equal expected, a.to_ast
   end
 
@@ -32,6 +35,7 @@ class LambdaTest < RegularTest
     a = ->(x, y) { x - y }
 
     expected = binop_lambda(:-)
+
     assert_equal expected, a.to_ast
   end
 
@@ -39,6 +43,7 @@ class LambdaTest < RegularTest
     a = proc { |x, y| x / y }
 
     expected = binop_block(:proc, :/)
+
     assert_equal expected, a.to_ast
   end
 
@@ -46,6 +51,7 @@ class LambdaTest < RegularTest
     a = Proc.new { |x, y| x + y }
 
     expected = binop_proc_new(:+)
+
     assert_equal expected, a.to_ast
   end
 
@@ -53,6 +59,7 @@ class LambdaTest < RegularTest
     block = return_block { |x, y| x * y }
 
     expected = binop_block(:return_block, :*)
+
     assert_equal expected, block.to_ast
   end
 
@@ -60,6 +67,7 @@ class LambdaTest < RegularTest
     block = return_block do |x, y| x - y end
 
     expected = binop_block(:return_block, :-)
+
     assert_equal expected, block.to_ast
   end
 end

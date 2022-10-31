@@ -51,6 +51,7 @@ class ErrorTest < RegularTest
       live = assert_raises TypeError do
         ast_eval(bad, binding)
       end
+
       assert_equal orig.message, live.message
 
       orig = assert_raises TypeError do
@@ -59,6 +60,7 @@ class ErrorTest < RegularTest
       live = assert_raises TypeError do
         ast_eval("3 + 4", binding, bad)
       end
+
       assert_equal orig.message, live.message
     end
   end
@@ -113,6 +115,7 @@ class ErrorTest < RegularTest
     error = assert_raises RuntimeError do
       LiveAST.load "foo.rb|ast@4"
     end
+
     assert_match(/revision token/, error.message)
   end
 end
