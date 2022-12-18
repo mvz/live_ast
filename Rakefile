@@ -4,7 +4,6 @@ require "rake/clean"
 require "rake/manifest/task"
 require "bundler/gem_tasks"
 require "rake/testtask"
-require "rdoc/task"
 
 namespace :test do
   desc "run tests"
@@ -51,13 +50,6 @@ namespace :test do
   end
 
   task all: [:main, :base, :ast_load, :to_ast, :to_ruby, :full]
-end
-
-RDoc::Task.new(:rdoc) do |t|
-  t.main = "README.rdoc"
-  t.title = "LiveAST: Live Abstract Syntax Trees"
-  t.options += ["--visibility", "private"]
-  t.rdoc_files.include("README.rdoc", "CHANGES.rdoc", "lib")
 end
 
 Rake::Manifest::Task.new do |t|
