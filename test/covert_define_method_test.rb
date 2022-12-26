@@ -5,8 +5,8 @@ require_relative "main"
 class CovertDefineMethodTest < RegularTest
   DEFINE = lambda do
     class A
-      def A.my_def(*args, &block)
-        define_method(*args, &block)
+      def A.my_def(...)
+        define_method(...)
       end
 
       my_def :h do |x, y|
