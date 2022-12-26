@@ -7,7 +7,7 @@ module LiveAST
     def arg_to_str(arg)
       arg.to_str
     rescue NameError
-      thing = arg.nil? ? nil : arg.class
+      thing = arg&.class
 
       message = "no implicit conversion of #{thing.inspect} into String"
       raise TypeError, message
@@ -16,7 +16,7 @@ module LiveAST
     def arg_to_str2(arg)
       arg.to_str
     rescue NameError
-      thing = arg.nil? ? nil : arg.class
+      thing = arg&.class
 
       message = "wrong argument type #{thing.inspect} (expected String)"
       raise TypeError, message
