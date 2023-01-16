@@ -56,7 +56,7 @@ class BaseTest < JLMiniTest
   end
 
   def temp_file(code, basename = nil)
-    basename ||= ("a".."z").to_a.shuffle.join + ".rb"
+    basename ||= "#{("a".."z").to_a.shuffle.join}.rb"
     path = File.join(DATA_DIR, basename)
 
     write_file path, code if code
