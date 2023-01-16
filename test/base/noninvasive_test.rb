@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require_relative "../test_helper"
 
 class NoninvasiveTest < BaseTest
   def test_no_clutter
