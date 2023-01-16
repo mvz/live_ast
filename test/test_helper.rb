@@ -33,8 +33,6 @@ class JLMiniTest < MiniTest::Test
 
   def assert_nothing_raised
     yield
-
-    assert_nil nil
   rescue StandardError => e
     raise MiniTest::Assertion,
           exception_details(e, "Expected nothing raised, but got:")
@@ -58,7 +56,7 @@ class BaseTest < JLMiniTest
   end
 
   def temp_file(code, basename = nil)
-    basename ||= ("a".."z").to_a.shuffle.join + ".rb"
+    basename ||= "#{("a".."z").to_a.shuffle.join}.rb"
     path = File.join(DATA_DIR, basename)
 
     write_file path, code if code

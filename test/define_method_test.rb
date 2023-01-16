@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "main"
+require_relative "test_helper"
 
 class DefineMethodTest < RegularTest
   WITH_BLOCKS = lambda do
