@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "main"
+require_relative "test_helper"
 
 # test for flushing side-effects: unsort this TestCase from other
 # TestCases.

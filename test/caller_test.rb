@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "main"
+require_relative "test_helper"
 
 # test for optional caller redefinition: unsort this TestCase from
 # other TestCases.
