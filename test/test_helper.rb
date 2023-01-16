@@ -33,8 +33,6 @@ class JLMiniTest < MiniTest::Test
 
   def assert_nothing_raised
     yield
-
-    assert_nil nil
   rescue StandardError => e
     raise MiniTest::Assertion,
           exception_details(e, "Expected nothing raised, but got:")
