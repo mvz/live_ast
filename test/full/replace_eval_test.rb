@@ -145,8 +145,8 @@ class FullReplaceEvalTest < ReplaceEvalTest
     end
   end
 
-  def test_instance_eval_arg_error_no_block
-    [[], ("a".."z").to_a].each do |args|
+  def test_instance_eval_arity_error_no_block
+    [[], (1..10).to_a, ("a".."z").to_a].each do |args|
       orig = assert_raises ArgumentError do
         Object.new.live_ast_original_instance_eval(*args)
       end
@@ -156,21 +156,14 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
       assert_equal orig.message, live.message
     end
+  end
 
-    orig = assert_raises TypeError do
-      Object.new.live_ast_original_instance_eval(nil)
-    end
-    live = assert_raises TypeError do
-      Object.new.instance_eval(nil)
-    end
-
-    assert_equal orig.message, live.message
-
-    [[nil], [Object.new], [3], [4, 3, 2], (1..10).to_a].each do |args|
-      orig = assert_raises ArgumentError, TypeError do
+  def test_instance_eval_code_argument_type_error_no_block
+    [[nil], [Object.new], [3], [4, 3, 2]].each do |args|
+      orig = assert_raises TypeError do
         Object.new.live_ast_original_instance_eval(*args)
       end
-      live = assert_raises ArgumentError, TypeError do
+      live = assert_raises TypeError do
         Object.new.instance_eval(*args)
       end
 
@@ -179,32 +172,19 @@ class FullReplaceEvalTest < ReplaceEvalTest
     end
   end
 
-  describe "instance_eval argument errors" do
-    before do
-      require "live_ast/full"
+  def test_instance_eval_filename_argument_type_error_no_block
+    orig = assert_raises TypeError do
+      Object.new.live_ast_original_instance_eval("1", nil)
+    end
+    live = assert_raises TypeError do
+      Object.new.instance_eval("1", nil)
     end
 
-    let(:orig) {
-      assert_raises(ArgumentError, TypeError) do
-        Object.new.live_ast_original_instance_eval(*args)
-      end
-    }
-    let(:live) {
-      assert_raises(ArgumentError, TypeError) do
-        Object.new.instance_eval(*args)
-      end
-    }
-
-    describe "when the second argument is nil" do
-      let(:args) { ["1", nil] }
-      it "raises the same error as the original" do
-        assert_equal orig.message, live.message
-        assert_equal orig.class, live.class
-      end
-    end
+    assert_equal orig.message, live.message
+    assert_equal orig.class, live.class
   end
 
-  def test_instance_eval_arg_error_with_block
+  def test_instance_eval_arity_error_with_block
     orig = assert_raises ArgumentError do
       Object.new.live_ast_original_instance_eval(3, 4, 5) { nil }
     end
