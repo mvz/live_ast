@@ -346,7 +346,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
   end
 
   def test_module_eval_to_str
-    file = MiniTest::Mock.new
+    file = Minitest::Mock.new
     file.expect(:to_str, "zebra.rb")
     Class.new.module_eval("33 + 44", file)
     file.verify
