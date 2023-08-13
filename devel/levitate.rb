@@ -154,7 +154,7 @@ class Levitate
 
     def doc_to_test(file, *sections, &block)
       levitate = self
-      klass = Class.new MiniTest::Test do
+      klass = Class.new Minitest::Test do
         sections.each { |section|
           define_method "test_#{file}_#{section}" do
             if block

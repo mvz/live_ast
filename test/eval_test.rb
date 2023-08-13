@@ -268,7 +268,7 @@ class EvalTest < RegularTest
 
   # from rubyspec
   def test_to_str_on_file
-    file = MiniTest::Mock.new
+    file = Minitest::Mock.new
     file.expect(:to_str, "zebra.rb")
     ast_eval "33 + 44", binding, file
     file.verify

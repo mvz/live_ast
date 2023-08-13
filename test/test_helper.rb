@@ -13,7 +13,7 @@ $VERBOSE = true
 
 require "live_ast/base"
 
-class JLMiniTest < MiniTest::Test
+class JLMiniTest < Minitest::Test
   def self.test_methods
     default = super
     onlies = default.grep(/__only\Z/)
@@ -28,13 +28,13 @@ class JLMiniTest < MiniTest::Test
   def unfixable
     yield
     raise "claimed to be unfixable, but assertion succeeded"
-  rescue MiniTest::Assertion
+  rescue Minitest::Assertion
   end
 
   def assert_nothing_raised
     yield
   rescue StandardError => e
-    raise MiniTest::Assertion,
+    raise Minitest::Assertion,
           exception_details(e, "Expected nothing raised, but got:")
   end
 
