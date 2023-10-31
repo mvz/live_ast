@@ -64,7 +64,9 @@ class LambdaTest < RegularTest
   end
 
   def test_block_do_end_one_line
+    # rubocop:disable Style/SingleLineDoEndBlock
     block = return_block do |x, y| x - y end
+    # rubocop:enable Style/SingleLineDoEndBlock
 
     expected = binop_block(:return_block, :-)
 
