@@ -22,21 +22,21 @@ class AllEncodingTest < RegularTest
   }.freeze
 
   ENC_TESTS.each_pair do |abbr, name|
-    define_method "test_#{abbr}" do
+    define_method :"test_#{abbr}" do
       require_relative "encoding_test/#{abbr}"
       self.class.class_eval { include EncodingTest }
 
-      str = send("#{abbr}_string")
+      str = send(:"#{abbr}_string")
 
       assert_equal name, str.encoding.to_s
 
-      ast = EncodingTest.instance_method("#{abbr}_string").to_ast
+      ast = EncodingTest.instance_method(:"#{abbr}_string").to_ast
 
       assert_equal "UTF-8", no_arg_def_return(ast).encoding.to_s
 
       LiveAST.load "./test/encoding_test/#{abbr}.rb"
 
-      ast = EncodingTest.instance_method("#{abbr}_string").to_ast
+      ast = EncodingTest.instance_method(:"#{abbr}_string").to_ast
 
       assert_equal "UTF-8", no_arg_def_return(ast).encoding.to_s
     end
