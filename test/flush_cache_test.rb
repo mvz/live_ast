@@ -61,8 +61,7 @@ class FlushCacheTest < RegularTest
 
     LiveAST.flush_cache
 
-    assert_equal f_ast.object_id,
-                 klass.instance_method(:f).to_ast.object_id
+    assert_same f_ast, klass.instance_method(:f).to_ast
 
     assert_raises LiveAST::ASTNotFoundError do
       klass.instance_method(:g).to_ast
@@ -96,7 +95,7 @@ class FlushCacheTest < RegularTest
 
     LiveAST.flush_cache
 
-    assert_equal a_ast.object_id, a.to_ast.object_id
+    assert_same a_ast, a.to_ast
 
     assert_raises LiveAST::ASTNotFoundError do
       b.to_ast

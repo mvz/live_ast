@@ -42,7 +42,7 @@ class JLMiniTest < Minitest::Test
     empty equal in_delta in_epsilon includes instance_of
     kind_of match nil operator respond_to same
   ).each { |name|
-    alias_method :"assert_not_#{name}", "refute_#{name}"
+    alias_method :"assert_not_#{name}", :"refute_#{name}"
   }
 end
 
