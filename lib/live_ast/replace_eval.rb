@@ -57,7 +57,7 @@ module Kernel
     LiveAST.eval(
       string,
       binding || Binding.of_caller(1),
-      *LiveAST::Common.location_for_eval(binding, filename, lineno))
+      filename, lineno)
   end
 end
 
