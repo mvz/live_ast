@@ -53,12 +53,11 @@ module Kernel
 
   alias live_ast_original_eval eval
 
-  def eval(*args)
-    LiveAST::Common.check_arity(args, 1..4)
+  def eval(string, binding = nil, filename = nil, lineno = nil)
     LiveAST.eval(
-      args[0],
-      args[1] || Binding.of_caller(1),
-      *LiveAST::Common.location_for_eval(*args[1..3]))
+      string,
+      binding || Binding.of_caller(1),
+      *LiveAST::Common.location_for_eval(binding, filename, lineno))
   end
 end
 
