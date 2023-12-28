@@ -173,6 +173,8 @@ class FullReplaceEvalTest < ReplaceEvalTest
   end
 
   def test_instance_eval_filename_argument_nil_type_error_no_block
+    skip "nil is an acceptable filename argument in Ruby 3.3" if RUBY_VERSION >= "3.3.0"
+
     orig = assert_raises TypeError do
       Object.new.live_ast_original_instance_eval("1", nil)
     end
@@ -182,6 +184,15 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
     assert_equal orig.message, live.message
     assert_equal orig.class, live.class
+  end
+
+  def test_instance_eval_filename_argument_nil_ruby_3_3_no_block
+    unless RUBY_VERSION >= "3.3.0"
+      skip "nil is not an acceptable filename argument before Ruby 3.3"
+    end
+
+    assert_equal 1, Object.new.live_ast_original_instance_eval("1", nil)
+    assert_equal 1, Object.new.instance_eval("1", nil)
   end
 
   def test_instance_eval_filename_argument_conversion_type_error_no_block
@@ -360,6 +371,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
   def test_module_eval_to_str
     file = Minitest::Mock.new
     file.expect(:to_str, "zebra.rb")
+    file.expect(:nil?, false)
     Class.new.module_eval("33 + 44", file)
     file.verify
   end
@@ -404,33 +416,43 @@ class FullReplaceEvalTest < ReplaceEvalTest
   end
 
   def test_eval_location_without_binding
-    expected = ["(eval)", 2]
+    expected_file = if RUBY_VERSION >= "3.3.0"
+                      /^\(eval at #{__FILE__}:[0-9]+\)$/
+                    else
+                      /^\(eval\)$/
+                    end
 
-    assert_equal expected, live_ast_original_eval("\n[__FILE__, __LINE__]")
+    file, line = live_ast_original_eval("\n[__FILE__, __LINE__]")
 
-    unfixable do
-      assert_equal expected, eval("\n[__FILE__, __LINE__]")
-    end
+    assert_match expected_file, file
+    assert_equal 2, line
 
     file, line = eval("\n[__FILE__, __LINE__]")
-    file = LiveAST.strip_token file
+    adjusted_file = LiveAST.strip_token file
 
-    assert_equal expected, [file, line]
+    refute_match expected_file, file
+    assert_match expected_file, adjusted_file
+    assert_equal 2, line
   end
 
   def test_eval_location_with_binding
-    expected = ["(eval)", 2]
+    expected_file = if RUBY_VERSION >= "3.3.0"
+                      /^\(eval at #{__FILE__}:[0-9]+\)$/
+                    else
+                      /^\(eval\)$/
+                    end
 
-    assert_equal expected, live_ast_original_eval("\n[__FILE__, __LINE__]", binding)
+    file, line = live_ast_original_eval("\n[__FILE__, __LINE__]", binding)
 
-    unfixable do
-      assert_equal expected, eval("\n[__FILE__, __LINE__]", binding)
-    end
+    assert_match expected_file, file
+    assert_equal 2, line
 
     file, line = eval("\n[__FILE__, __LINE__]", binding)
-    file = LiveAST.strip_token file
+    adjusted_file = LiveAST.strip_token file
 
-    assert_equal expected, [file, line]
+    refute_match expected_file, file
+    assert_match expected_file, adjusted_file
+    assert_equal 2, line
   end
 
   DEFINE_BO_TEST = lambda do

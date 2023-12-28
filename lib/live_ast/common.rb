@@ -14,6 +14,8 @@ module LiveAST
     end
 
     def arg_to_str2(arg)
+      return "" if arg.nil? && RUBY_VERSION >= "3.3.0"
+
       arg.to_str
     rescue NameError
       thing = arg&.class
@@ -47,8 +49,10 @@ module LiveAST
       if filename
         lineno ||= 1
         [filename, lineno]
+      elsif RUBY_VERSION >= "3.3.0"
+        file, line = bind.source_location
+        ["(eval at #{file}:#{line})", 1]
       else
-        bind.source_location
         ["(eval)", 1]
       end
     end

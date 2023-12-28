@@ -51,7 +51,14 @@ class BacktraceTest < RegularTest
         RUBY
       end
 
-      assert_equal orig.first, live.first
+      if RUBY_VERSION >= "3.3.0"
+        expected = orig.first.sub(/:[0-9]+\)/, ":LINE)")
+        actual = live.first.sub(/:[0-9]+\)/, ":LINE)")
+
+        assert_equal expected, actual
+      else
+        assert_equal orig.first, live.first
+      end
     end
   end
 

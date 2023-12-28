@@ -74,6 +74,7 @@ module LiveAST
       def find_ast(*location)
         raise ASTNotFoundError unless location.size == 2
         raise RawEvalError if location.first == "(eval)"
+        raise RawEvalError if location.first.match?(/^\(eval at .*\)$/) # Ruby 3.3
         raise ASTNotFoundError if location.first == "<internal:prelude>"
 
         ast = fetch_from_cache(*location)
