@@ -172,12 +172,24 @@ class FullReplaceEvalTest < ReplaceEvalTest
     end
   end
 
-  def test_instance_eval_filename_argument_type_error_no_block
+  def test_instance_eval_filename_argument_nil_type_error_no_block
     orig = assert_raises TypeError do
       Object.new.live_ast_original_instance_eval("1", nil)
     end
     live = assert_raises TypeError do
       Object.new.instance_eval("1", nil)
+    end
+
+    assert_equal orig.message, live.message
+    assert_equal orig.class, live.class
+  end
+
+  def test_instance_eval_filename_argument_conversion_type_error_no_block
+    orig = assert_raises TypeError do
+      Object.new.live_ast_original_instance_eval("1", 23)
+    end
+    live = assert_raises TypeError do
+      Object.new.instance_eval("1", 23)
     end
 
     assert_equal orig.message, live.message

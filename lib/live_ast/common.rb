@@ -18,7 +18,12 @@ module LiveAST
     rescue NameError
       thing = arg&.class
 
-      message = "wrong argument type #{thing.inspect} (expected String)"
+      message = if arg.nil?
+                  "wrong argument type #{thing.inspect} (expected String)"
+                else
+                  "no implicit conversion of #{thing.inspect} into String"
+                end
+
       raise TypeError, message
     end
 
