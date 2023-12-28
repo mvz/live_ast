@@ -7,9 +7,9 @@ module Kernel
 
   alias live_ast_original_raise raise
 
-  def raise(*args)
+  def raise(...)
     ex = begin
-           live_ast_original_raise(*args)
+           live_ast_original_raise(...)
          rescue Exception => e
            e
          end
