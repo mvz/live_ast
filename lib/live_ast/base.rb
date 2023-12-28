@@ -51,8 +51,8 @@ module LiveAST
     #
     # Equivalent to <code>Kernel#ast_eval</code>.
     #
-    def eval(*args) # :nodoc:
-      Evaler.eval(args[0], *args)
+    def eval(string, bind, filename = nil, lineno = nil) # :nodoc:
+      Evaler.eval(string, string, bind, filename, lineno)
     end
 
     #

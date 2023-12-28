@@ -7,7 +7,7 @@ module Kernel
 
   # The same as +eval+ except that the binding argument is required
   # and AST-accessible objects are created.
-  def ast_eval(*args)
-    LiveAST::Evaler.eval(args[0], *args)
+  def ast_eval(string, bind, filename = nil, lineno = nil)
+    LiveAST::Evaler.eval(string, string, bind, filename, lineno)
   end
 end

@@ -53,12 +53,11 @@ module Kernel
 
   alias live_ast_original_eval eval
 
-  def eval(*args)
-    LiveAST::Common.check_arity(args, 1..4)
+  def eval(string, binding = nil, filename = nil, lineno = nil)
     LiveAST.eval(
-      args[0],
-      args[1] || Binding.of_caller(1),
-      *LiveAST::Common.location_for_eval(*args[1..3]))
+      string,
+      binding || Binding.of_caller(1),
+      *LiveAST::Common.location_for_eval(binding, filename, lineno))
   end
 end
 
@@ -66,8 +65,8 @@ end
 class Binding
   alias live_ast_original_binding_eval eval
 
-  def eval(*args)
-    LiveAST.eval(args[0], self, *args[1..])
+  def eval(string, filename = nil, lineno = nil)
+    LiveAST.eval(string, self, filename, lineno)
   end
 end
 
@@ -75,6 +74,8 @@ end
 class BasicObject
   alias live_ast_original_instance_eval instance_eval
 
+  # Arity must be handled in code because the first argument is only required
+  # if no block is passed.
   def instance_eval(*args, &block)
     if block
       live_ast_original_instance_eval(*args, &block)
@@ -92,6 +93,8 @@ end
 class Module
   alias live_ast_original_module_eval module_eval
 
+  # Arity must be handled in code because the first argument is only required
+  # if no block is passed.
   def module_eval(*args, &block)
     if block
       live_ast_original_module_eval(*args, &block)

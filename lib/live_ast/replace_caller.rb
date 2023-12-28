@@ -6,8 +6,9 @@ module Kernel
   private
 
   alias live_ast_original_caller caller
-  def caller(*args)
-    c = live_ast_original_caller(*args)
+
+  def caller(...)
+    c = live_ast_original_caller(...)
     c.shift
     c.map { |line| LiveAST.strip_token line }
   end

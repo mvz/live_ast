@@ -2,8 +2,9 @@
 
 module LiveAST
   class Cache
-    def initialize(*args)
-      @source, @user_line = args
+    def initialize(file, lineno)
+      @source = file
+      @user_line = lineno
       @asts = nil
     end
 
@@ -109,10 +110,8 @@ module LiveAST
         return key, cache
       end
 
-      def new_cache_synced(*args)
-        @mutex.synchronize do
-          new_cache(*args)
-        end
+      def new_cache_synced(...)
+        @mutex.synchronize { new_cache(...) }
       end
 
       def flush_cache
