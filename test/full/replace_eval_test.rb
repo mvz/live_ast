@@ -403,7 +403,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
     assert_equal 33, Class.new.instance_eval("args")
   end
 
-  def test_location_without_binding
+  def test_eval_location_without_binding
     expected = ["(eval)", 2]
 
     assert_equal expected, live_ast_original_eval("\n[__FILE__, __LINE__]")
@@ -413,6 +413,21 @@ class FullReplaceEvalTest < ReplaceEvalTest
     end
 
     file, line = eval("\n[__FILE__, __LINE__]")
+    file = LiveAST.strip_token file
+
+    assert_equal expected, [file, line]
+  end
+
+  def test_eval_location_with_binding
+    expected = ["(eval)", 2]
+
+    assert_equal expected, live_ast_original_eval("\n[__FILE__, __LINE__]", binding)
+
+    unfixable do
+      assert_equal expected, eval("\n[__FILE__, __LINE__]", binding)
+    end
+
+    file, line = eval("\n[__FILE__, __LINE__]", binding)
     file = LiveAST.strip_token file
 
     assert_equal expected, [file, line]

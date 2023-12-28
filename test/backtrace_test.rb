@@ -34,7 +34,7 @@ class BacktraceTest < RegularTest
   def test_raise_no_overrides
     3.times do
       orig = exception_backtrace do
-        eval <<~RUBY, binding, __FILE__, (__LINE__ + 9)
+        eval <<~RUBY, binding
 
 
           raise
@@ -52,9 +52,6 @@ class BacktraceTest < RegularTest
       end
 
       assert_equal orig.first, live.first
-      here = Regexp.quote __FILE__
-
-      assert_match(/#{here}/, live.first)
     end
   end
 

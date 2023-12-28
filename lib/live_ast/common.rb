@@ -43,15 +43,12 @@ module LiveAST
       raise TypeError, message
     end
 
-    def location_for_eval(bind = nil, filename = nil, lineno = nil)
-      if bind
-        if filename
-          lineno ||= 1
-          [filename, lineno]
-        else
-          bind.source_location
-        end
+    def location_for_eval(bind, filename = nil, lineno = nil)
+      if filename
+        lineno ||= 1
+        [filename, lineno]
       else
+        bind.source_location
         ["(eval)", 1]
       end
     end
