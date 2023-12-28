@@ -31,6 +31,9 @@ class CallerTest < RegularTest
       foo
     RUBY
 
+    orig.shift if orig.first.start_with? "<internal"
+    live.shift if live.first.start_with? "<internal"
+
     orig_top = orig.first
     live_top = live.first
 
