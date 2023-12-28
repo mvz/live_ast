@@ -74,6 +74,8 @@ end
 class BasicObject
   alias live_ast_original_instance_eval instance_eval
 
+  # Arity must be handled in code because the first argument is only required
+  # if no block is passed.
   def instance_eval(*args, &block)
     if block
       live_ast_original_instance_eval(*args, &block)
@@ -91,6 +93,8 @@ end
 class Module
   alias live_ast_original_module_eval module_eval
 
+  # Arity must be handled in code because the first argument is only required
+  # if no block is passed.
   def module_eval(*args, &block)
     if block
       live_ast_original_module_eval(*args, &block)
