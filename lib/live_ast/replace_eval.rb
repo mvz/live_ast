@@ -65,8 +65,8 @@ end
 class Binding
   alias live_ast_original_binding_eval eval
 
-  def eval(*args)
-    LiveAST.eval(args[0], self, *args[1..])
+  def eval(string, filename = nil, lineno = nil)
+    LiveAST.eval(string, self, filename, lineno)
   end
 end
 
