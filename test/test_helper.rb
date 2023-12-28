@@ -8,6 +8,7 @@ require "fileutils"
 
 require "minitest/mock"
 require "minitest/autorun"
+require "minitest/focus"
 
 $VERBOSE = true
 
