@@ -49,8 +49,10 @@ module LiveAST
       if filename
         lineno ||= 1
         [filename, lineno]
+      elsif RUBY_VERSION >= "3.3.0"
+        file, line = bind.source_location
+        ["(eval at #{file}:#{line})", 1]
       else
-        bind.source_location
         ["(eval)", 1]
       end
     end
