@@ -2,8 +2,9 @@
 
 module LiveAST
   class Cache
-    def initialize(*args)
-      @source, @user_line = args
+    def initialize(file, lineno)
+      @source = file
+      @user_line = lineno
       @asts = nil
     end
 
