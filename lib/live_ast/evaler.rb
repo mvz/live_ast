@@ -5,8 +5,8 @@ module LiveAST
     class << self
       include Common
 
-      def eval(parser_source, *args)
-        evaler_source, bind, *rest = handle_args(*args)
+      def eval(parser_source, evaler_source, bind, filename = nil, lineno = nil)
+        evaler_source, bind, *rest = handle_args(evaler_source, bind, filename, lineno)
 
         file, line = location_for_eval(bind, *rest)
         file = LiveAST.strip_token(file)
@@ -23,7 +23,6 @@ module LiveAST
 
       def handle_args(*args)
         args.tap do
-          check_arity(args, 2..4)
           args[0] = arg_to_str(args[0])
           check_is_binding(args[1])
           args[2] = arg_to_str(args[2]) if args[2]
