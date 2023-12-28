@@ -14,6 +14,8 @@ module LiveAST
     end
 
     def arg_to_str2(arg)
+      return "" if arg.nil? && RUBY_VERSION >= "3.3.0"
+
       arg.to_str
     rescue NameError
       thing = arg&.class
