@@ -1,5 +1,12 @@
 = live_ast Changes
 
+== Version 2.2.0
+
+* Improve error message compatibility for instance_eval filename argument
+* Drop support for Ruby 2.7
+* Fix source location for eval with binding and no location
+* Add support for Ruby 3.2 and 3.3
+
 == Version 2.1.2
 
 * Raise informative acception for methods defined in the prelude
