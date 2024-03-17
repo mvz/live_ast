@@ -329,7 +329,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
     RUBY
 
     assert_equal 33, orig.new.value
-    assert orig.new.f.is_a?(Proc)
+    assert_kind_of Proc, orig.new.f
 
     y = 44
     ignore(y)
@@ -344,7 +344,7 @@ class FullReplaceEvalTest < ReplaceEvalTest
     RUBY
 
     assert_equal 44, live.new.value
-    assert live.new.g.is_a?(Proc)
+    assert_kind_of Proc, live.new.g
 
     assert_equal no_arg_block(:lambda, "g return"),
                  live.new.g.to_ast
