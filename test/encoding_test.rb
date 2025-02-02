@@ -49,8 +49,7 @@ class AllEncodingTest < RegularTest
     live = assert_raises ArgumentError do
       LiveAST.load "./test/encoding_test/bad.rb"
     end
-    # inconsistent punctuation from Ruby
-    re = /\Aunknown encoding name\s*[-:]\s*feynman-diagram\Z/
+    re = /\Aunknown encoding name:\s*feynman-diagram\Z/
 
     assert_match re, orig.message
     assert_match re, live.message
