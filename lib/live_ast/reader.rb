@@ -13,8 +13,14 @@ module LiveAST
 
       # magic comment overrides BOM
       encoding = contents[MAGIC_COMMENT, 1] || utf8 || "US-ASCII"
+      encoding = strip_special encoding
+      begin
+        Encoding.find encoding
+      rescue ArgumentError
+        raise ArgumentError, "unknown encoding name: #{encoding}"
+      end
 
-      contents.force_encoding(strip_special(encoding))
+      contents.force_encoding encoding
     end
 
     def self.strip_special(encoding)
