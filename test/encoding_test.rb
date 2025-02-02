@@ -49,9 +49,18 @@ class AllEncodingTest < RegularTest
     live = assert_raises ArgumentError do
       LiveAST.load "./test/encoding_test/bad.rb"
     end
-    re = /\Aunknown encoding name:\s*feynman-diagram\Z/
 
-    assert_match re, orig.message
-    assert_match re, live.message
+    assert_equal orig.class, live.class
+
+    if RUBY_VERSION >= "3.4."
+      # Ruby 3.4 changed how bad magic encoding comments are reported, and the
+      # message is difficult to replicate. Use the old message format for now.
+      assert_match(
+        /unknown or invalid encoding in the magic comment\n.*# encoding: feynman-diagram\n/,
+        orig.message)
+      assert_equal "unknown encoding name: feynman-diagram", live.message
+    else
+      assert_equal orig.message, live.message
+    end
   end
 end

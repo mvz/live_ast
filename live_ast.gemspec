@@ -14,8 +14,9 @@ Gem::Specification.new do |spec|
     generated code.
   DESC
   spec.homepage = "https://github.com/mvz/live_ast"
+
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.0.0"
+  spec.required_ruby_version = ">= 3.1.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/mvz/live_ast"
@@ -38,7 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest-focus", "~> 1.4"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rake-manifest", "~> 0.2.0"
-  spec.add_development_dependency "rubocop", "~> 1.51"
+  spec.add_development_dependency "rubocop", "~> 1.70"
   spec.add_development_dependency "rubocop-minitest", "~> 0.36.0"
   spec.add_development_dependency "rubocop-packaging", "~> 0.5.2"
   spec.add_development_dependency "rubocop-performance", "~> 1.20"
