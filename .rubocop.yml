@@ -4,7 +4,7 @@ inherit_mode:
   merge:
     - Exclude
 
-require:
+plugins:
   - rubocop-minitest
   - rubocop-packaging
   - rubocop-performance
@@ -125,7 +125,7 @@ Style/Next:
 # Use {} for %-literals, and revert to previous RuboCop default for %w
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
-    '%':  '{}'
+    '%': '{}'
     '%w': ()
 
 # Allow Proc.new in tests
