@@ -1,5 +1,10 @@
 = live_ast Changes
 
+== Version 2.3.0
+
+* Make load error message match original exactly
+* Support Ruby 3.2 through 3.4, dropping support for Ruby 3.0 and 3.1
+
 == Version 2.2.0
 
 * Improve error message compatibility for instance_eval filename argument
