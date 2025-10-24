@@ -1,159 +1,162 @@
-= live_ast Changes
+# live_ast Changes
 
-== Version 2.2.0
+## Version 2.2.0
 
 * Improve error message compatibility for instance_eval filename argument
 * Drop support for Ruby 2.7
 * Fix source location for eval with binding and no location
 * Add support for Ruby 3.2 and 3.3
 
-== Version 2.1.2
+## Version 2.1.2
 
 * Raise informative acception for methods defined in the prelude
 
-== Version 2.1.1
+## Version 2.1.1
 
 * Loosen dependency on ruby2ruby
 
-== Version 2.1.0
+## Version 2.1.0
 
 * Add support for Ruby 3.1
 * Add `live_ast/replace_caller` similar to `replace_raise`
 
-== Version 2.0.0
+## Version 2.0.0
 
-* Breaking change: Use bindings gem instead of binding_of_caller.
-  If you've been using the full integration mode, you will have to replace
+* Breaking change: Use bindings gem instead of binding_of_caller. If you've
+  been using the full integration mode, you will have to replace
   binding_of_caller with bindings.
 * Add support for Ruby 3.0
 * Drop support for Ruby 2.3, 2.4 and 2.5
 
-== Version 1.3.2
+## Version 1.3.2
 
 * Add support for Ruby 2.6
 
-== Version 1.3.1
+## Version 1.3.1
 
 * Loosen dependency on ruby_parser
 
-== Version 1.3.0
+## Version 1.3.0
 
 * Drop support for Rubies below 2.3
 * Update dependencies
 
-== Version 1.2.0
+## Version 1.2.0
 
 * Drop support for Rubies below 2.1
 * Handle multi-line definitions in IRB correctly
 * Tighten and update dependencies
 
-== Version 1.1.3
+## Version 1.1.3
 
 * Keep ASTs in the cache when they are fetched, allowing aliased methods to
   retrieve their AST under both names.
 * Do not destroy the AST when creating ruby source
 
-== Version 1.1.2
+## Version 1.1.2
 
 * Update dependencies
 * Improve test suite:
-  - Separate suites for different sets of loaded live_ast features
-  - Eliminate test run order dependencies
+   * Separate suites for different sets of loaded live_ast features
+   * Eliminate test run order dependencies
 * Clean up code
 * Fix error handling for nil file argument of instance_eval
 
-== Version 1.1.1
+## Version 1.1.1
 
 * Support Ruby 2.0 and 2.1
 * Update RubyParser dependency
 
-== Version 1.1.0
+## Version 1.1.0
 
 * incorporate default parser in the main gem
 * update RubyParser dependency
 * use binding_of_caller gem instead of boc
 
-== Version 1.0.2
+## Version 1.0.2
 
 * handle -unix, -dos, -mac special encoding suffixes
 
-== Version 1.0.1
+## Version 1.0.1
 
-* add tests for "def self.f" and "def A.f" (plugins were missing this construct)
+* add tests for "def self.f" and "def A.f" (plugins were missing this
+  construct)
 
-== Version 1.0.0
+## Version 1.0.0
 
 * no known bugs; API is settled
 * ast_load respects $VERBOSE=true
 
-== Version 0.7.3
+## Version 0.7.3
 
 * live_ast/full now available for jruby (via boc gem)
 * fix instance_eval with BasicObject instance
 
-== Version 0.7.2
+## Version 0.7.2
 
-* fix old find&replace accident with boc; rubyspec test now enabled by default
+* fix old find&replace accident with boc; rubyspec test now enabled by
+  default
 
-== Version 0.7.1
+## Version 0.7.1
 
 * fix rubygems problem when parser not loaded after live_ast/full
 
-== Version 0.7.0
+## Version 0.7.0
 
 * eval replacement option now included in the gem
 * new 'boc' gem for eval replacement -- no more syntax restrictions
-* add require 'live_ast/full' -- shortcut for live_ast + live_ast/replace_eval
+* add require 'live_ast/full' -- shortcut for live_ast +
+  live_ast/replace_eval
 * rubyspec conformance for require 'live_ast/full'
 * added required_ruby_version to gemspec
 * fixed error when IRB is partially required
 
-== Version 0.6.3
+## Version 0.6.3
 
 * minor change for Ruby 1.9.3
 
-== Version 0.6.2
+## Version 0.6.2
 
 * simplified irb handling; readline no longer required
 * add -e notes to readme
 
-== Version 0.6.1
+## Version 0.6.1
 
 * enable usage inside irb
 
-== Version 0.6.0
+## Version 0.6.0
 
 * removed FlushError and NoSourceError -- not possible to distinguish these
 * added more tests
 * refined testing API for plugins
 
-== Version 0.5.2
+## Version 0.5.2
 
 * fix default plugin version
 
-== Version 0.5.1
+## Version 0.5.1
 
 * protect against user needlessly requiring default parser
 
-== Version 0.5.0
+## Version 0.5.0
 
 * new parser plugin API
 
-== Version 0.2.3
+## Version 0.2.3
 
 * fix a utf-8 BOM issue
 
-== Version 0.2.2
+## Version 0.2.2
 
 * handle utf-8 BOMs in loading
 
-== Version 0.2.1
+## Version 0.2.1
 
 * fixed some rdoc issues
 * removed rubyforge references
 * update ruby_parser
 * less MRI-centric tests
 
-== Version 0.2.0
+## Version 0.2.0
 
 * initial release
