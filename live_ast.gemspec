@@ -31,8 +31,7 @@ Gem::Specification.new do |spec|
                        "--visibility", "private"]
   spec.extra_rdoc_files = ["README.rdoc", "CHANGES.rdoc"]
 
-  spec.add_dependency "ruby2ruby", ">= 2.4", "< 2.7"
-  spec.add_dependency "ruby_parser", "~> 3.14"
+  spec.add_dependency "ruby2ruby", "~> 2.6"
 
   spec.add_development_dependency "bindings", "~> 1.0.0"
   spec.add_development_dependency "minitest", "~> 6.0"

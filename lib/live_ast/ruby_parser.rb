@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "ruby_parser"
+require "prism"
 require "live_ast/base"
 
 module LiveAST
@@ -13,7 +13,7 @@ module LiveAST
     #
     def parse(source)
       @defs = {}
-      process ::RubyParser.new.parse(source)
+      process ::Prism::Translation::RubyParser.new.parse(source)
       @defs
     end
 

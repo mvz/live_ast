@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "ruby2ruby"
 #
 # Used by the LiveAST test suite.
 #
