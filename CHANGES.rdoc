@@ -1,4 +1,10 @@
-= live_ast Changes
+= mvz-live_ast Changes
+
+== Version 2.4.0
+
+* Update ruby2ruby dependency
+* Add support for Ruby 4.0
+* Replace RubyParser with Prism's RubyParser-compatible translation layer
 
 == Version 2.3.0
 
