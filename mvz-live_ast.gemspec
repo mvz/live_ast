@@ -32,16 +32,4 @@ Gem::Specification.new do |spec|
   spec.extra_rdoc_files = ["README.rdoc", "CHANGES.rdoc"]
 
   spec.add_dependency "ruby2ruby", "~> 2.6"
-
-  spec.add_development_dependency "bindings", "~> 1.0.0"
-  spec.add_development_dependency "minitest", "~> 6.0"
-  spec.add_development_dependency "minitest-focus", "~> 1.4"
-  spec.add_development_dependency "minitest-mock", "~> 5.27"
-  spec.add_development_dependency "rake", "~> 13.0"
-  spec.add_development_dependency "rake-manifest", "~> 0.2.0"
-  spec.add_development_dependency "rubocop", "~> 1.76"
-  spec.add_development_dependency "rubocop-minitest", "~> 0.38.0"
-  spec.add_development_dependency "rubocop-packaging", "~> 0.6.0"
-  spec.add_development_dependency "rubocop-performance", "~> 1.25"
-  spec.add_development_dependency "rubocop-rake", "~> 0.7.1"
 end
