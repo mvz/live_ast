@@ -12,7 +12,7 @@ module LiveAST
       utf8 = contents.sub!(UTF8_BOM, "") ? "UTF-8" : nil
 
       # magic comment overrides BOM
-      encoding = contents[MAGIC_COMMENT, 1] || utf8 || "US-ASCII"
+      encoding = contents[MAGIC_COMMENT, 1] || utf8 || "UTF-8"
       encoding = strip_special encoding
       begin
         Encoding.find encoding
