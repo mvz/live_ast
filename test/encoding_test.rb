@@ -34,11 +34,16 @@ class AllEncodingTest < RegularTest
 
       assert_equal name, no_arg_def_return(ast).encoding.to_s
 
-      LiveAST.load "./test/encoding_test/#{abbr}.rb"
+      file_path = File.expand_path("encoding_test/#{abbr}.rb", __dir__)
+      LiveAST.load file_path
 
       ast = EncodingTest.instance_method(:"#{abbr}_string").to_ast
 
       assert_equal name, no_arg_def_return(ast).encoding.to_s
+
+      content = LiveAST::Reader.read file_path
+
+      assert_equal name, content.encoding.to_s
     end
   end
 
