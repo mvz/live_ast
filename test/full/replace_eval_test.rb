@@ -274,13 +274,13 @@ class FullReplaceEvalTest < ReplaceEvalTest
 
   def test_module_eval_block
     orig = Module.new
-    # rubocop:disable Lint/NestedMethodDefinition
+    # rubocop:disable-next Lint/NestedMethodDefinition
     orig.live_ast_original_module_eval do
       def f
         "orig"
       end
     end
-    # rubocop:enable Lint/NestedMethodDefinition
+
     refute_nil orig.instance_method(:f)
 
     live = Module.new
