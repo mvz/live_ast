@@ -11,9 +11,9 @@ group :development, :test do
   gem "minitest-mock", "~> 5.27"
   gem "rake", "~> 13.0"
   gem "rake-manifest", "~> 0.2.0"
-  gem "rubocop", "~> 1.85"
-  gem "rubocop-minitest", "~> 0.40.0"
+  gem "rubocop", "~> 1.91"
+  gem "rubocop-minitest", "~> 0.41.0"
   gem "rubocop-packaging", "~> 0.6.0"
-  gem "rubocop-performance", "~> 1.26"
+  gem "rubocop-performance", "~> 1.27"
   gem "rubocop-rake", "~> 0.7.1"
 end
